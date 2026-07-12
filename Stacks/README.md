@@ -1,4 +1,3 @@
-<img width="647" height="640" alt="image" src="https://github.com/user-attachments/assets/5d02a1b2-9ccf-4452-8358-9f2a3b02389c" />
 
 # Pipeline bioinformático con Stacks para *Octopus mimus*
 
