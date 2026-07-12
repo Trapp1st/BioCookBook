@@ -1,0 +1,93 @@
+# Pipeline bioinformático con Stacks para *Octopus mimus*
+
+Pipeline para el procesamiento de datos ddRADseq de *Octopus mimus*, 
+desde las lecturas crudas hasta las estadísticas poblacionales, usando 
+el software Stacks. 
+
+## Resumen del pipeline
+
+1. **process_radtags** — demultiplexado y limpieza de lecturas crudas
+2. **denovo_map.pl** — ensamblaje de novo y catálogo de loci
+3. **populations** — estadísticas poblacionales y exportación de datos
+
+---
+
+## 1. process_radtags
+
+Demultiplexa las lecturas por individuo a partir de los archivos crudos 
+del secuenciador (pools Novogene) y elimina lecturas de baja calidad.
+
+```bash
+nohup process_radtags -P -p ./raw_pools -b ./barcodes/barcodes_Pool2y3.txt -o ./demultiplexed -c -q -r
+-s 25 --inline_index --renz_1 ecoRI --renz_2 mspI &> process_log &
+```
+
+**Notas:**
+- `-P`: datos paired-end (lecturas R1 + R2 emparejadas)
+- `-p -/raw_pools`: la ruta hacia la carpeta donde están mis lecturas crudas del pool
+- `-b barcodes_Pool2y3.txt`: ruta hacia la carpeta de archivo de barcodes
+- `-r`: rescata barcodes/cortes con errores menores
+- `-r`: rescata barcodes/cortes con errores menores
+- `-c`, `-q`: descarta lecturas de baja calidad o con Ns
+
+![Ejemplo de salida process_radtags](imagenes/process_radtags_output.png)
+
+---
+
+## 2. denovo_map.pl
+
+Ensambla los loci de novo (sin genoma de referencia) y construye el 
+catálogo compartido entre individuos.
+
+```bash
+denovo_map.pl -M 4 -n 3 -m 3 -T 8 \
+  -o ./stacks_output/ \
+  --samples ./samples/ \
+  --popmap ./popmap_RAllinOne.tsv
+```
+
+**Parámetros clave (definidos tras optimización r80, Paris et al. 2017):**
+- `-m 3`: mínimo de lecturas para formar un stack
+- `-M 4`: mismatches permitidos entre stacks de un mismo individuo
+- `-n 3`: mismatches permitidos entre individuos al construir el catálogo
+
+Corrida unificada "RAllinOne" — catálogo construido con las 10 
+localidades combinadas.
+
+![Resumen del catálogo](imagenes/denovo_map_summary.png)
+
+---
+
+## 3. populations
+
+Genera estadísticas poblacionales, filtra loci según parámetros de 
+representación, y exporta formatos de salida (VCF, structure, etc.).
+
+```bash
+populations -P ./stacks_output/ -M ./popmap_RAllinOne.tsv \
+  -r 0.8 --vcf --genepop -t 8
+```
+
+**Notas:**
+- `-r 0.8`: el locus debe estar presente en el 80% de los individuos 
+  por población (filtro r80)
+- Salidas usadas después para DAPC (adegenet) y análisis de missing 
+  data (VCFtools)
+
+![Estadísticas de populations](imagenes/populations_stats.png)
+
+---
+
+## Problemas conocidos / decisiones tomadas
+
+- Individuos **LI17** y **LI3** mostraron >40% de missing data — 
+  evaluados para exclusión.
+- Localidades de bajo n (Los Órganos, Lobitos) — en evaluación para 
+  fusionar con localidades vecinas antes de re-correr denovo_map.
+- RAM: evitar correr cstacks en simultáneo con múltiples hilos si el 
+  servidor tiene memoria limitada (crashes observados).
+
+## Referencias
+
+- Paris, J.R., Stevens, J.R., Catchen, J.M. (2017). Lost in parameter 
+  space: a road map for stacks. *Methods in Ecology and Evolution*.
