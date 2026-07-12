@@ -1,4 +1,4 @@
-# Pipeline bioinformático con Stacks para *Octopus mimus*
+<img width="647" height="640" alt="image" src="https://github.com/user-attachments/assets/5d02a1b2-9ccf-4452-8358-9f2a3b02389c" /># Pipeline bioinformático con Stacks para *Octopus mimus*
 
 Pipeline para el procesamiento de datos ddRADseq de *Octopus mimus*, 
 desde las lecturas crudas hasta las estadísticas poblacionales, usando 
@@ -6,11 +6,17 @@ el software Stacks.
 
 ## Resumen del pipeline
 
-1. **process_radtags** — demultiplexado y limpieza de lecturas crudas
-2. **denovo_map.pl** — ensamblaje de novo y catálogo de loci
-3. **populations** — estadísticas poblacionales y exportación de datos
+1. **process_radtags**: demultiplexado y limpieza de lecturas crudas
+2. **denovo_map.pl**: ensamblaje de novo y catálogo de loci
+3. **populations**: estadísticas poblacionales y exportación de datos
 
 ---
+
+## Preparación de los formatos de los archivos
+
+**BARCODEFILE:**
+La estructura del barcodefile es <BARCODE> <INDEX> <SAMPLE_NAME>
+Es un archivo sin extensión o de texto o separado por tabulaciones.
 
 ## 1. process_radtags
 
@@ -22,13 +28,19 @@ nohup process_radtags -P -p ./raw_pools -b ./barcodes/barcodes_Pool2y3.txt -o ./
 -s 25 --inline_index --renz_1 ecoRI --renz_2 mspI &> process_log &
 ```
 
-**Notas:**
+**Parámetros:**
 - `-P`: datos paired-end (lecturas R1 + R2 emparejadas)
 - `-p -/raw_pools`: la ruta hacia la carpeta donde están mis lecturas crudas del pool
 - `-b barcodes_Pool2y3.txt`: ruta hacia la carpeta de archivo de barcodes
-- `-r`: rescata barcodes/cortes con errores menores
-- `-r`: rescata barcodes/cortes con errores menores
-- `-c`, `-q`: descarta lecturas de baja calidad o con Ns
+- `-o ./demultiplexed`: carpeta de salida para los archivos FastQ separados
+- `-c`: clean: remueve aquellas lecturas con bases indeterminadas (N)
+- `-q`: filtro  de calidad (Phred)
+- `-r`: rescata barcodes/sitios de corte con errores menores
+- `-s 25`: umbral de Phred para el parámetro de -q
+- `--inline_index`: índice dentro de la lectura, no como archivo aparte
+- `--renz_1 ecoRI`: enzima corte raro (sitio GAATTC)
+- `--renz_2 mspI`: enzima corte frecuente (CCGG)
+
 
 ![Ejemplo de salida process_radtags](imagenes/process_radtags_output.png)
 
