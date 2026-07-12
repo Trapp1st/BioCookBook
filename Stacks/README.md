@@ -1,4 +1,6 @@
-<img width="647" height="640" alt="image" src="https://github.com/user-attachments/assets/5d02a1b2-9ccf-4452-8358-9f2a3b02389c" /># Pipeline bioinformático con Stacks para *Octopus mimus*
+<img width="647" height="640" alt="image" src="https://github.com/user-attachments/assets/5d02a1b2-9ccf-4452-8358-9f2a3b02389c" />
+
+# Pipeline bioinformático con Stacks para *Octopus mimus*
 
 Pipeline para el procesamiento de datos ddRADseq de *Octopus mimus*, 
 desde las lecturas crudas hasta las estadísticas poblacionales, usando 
@@ -15,7 +17,7 @@ el software Stacks.
 ## Preparación de los formatos de los archivos
 
 **BARCODEFILE:**
-La estructura del barcodefile es <BARCODE> <INDEX> <SAMPLE_NAME>
+La estructura del barcodefile es **BARCODE** | **INDEX** | **SAMPLE_NAME**
 Es un archivo sin extensión o de texto o separado por tabulaciones.
 
 ## 1. process_radtags
