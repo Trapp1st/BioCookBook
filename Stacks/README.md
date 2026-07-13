@@ -1,13 +1,12 @@
 
 # Pipeline bioinformático con Stacks para *Octopus mimus*
 
-Este es un pipeline para el procesamiento de datos ddRADseq de *Octopus mimus*, desde las lecturas crudas hasta las estadísticas poblacionales, usando 
-el software Stacks. 
+Este es un pipeline para el procesamiento de datos ddRADseq de *Octopus mimus*, desde las lecturas crudas hasta las estadísticas poblacionales, usando Stacks. 
 
 ## Resumen del pipeline
 
-1. **process_radtags**: demultiplexado y limpieza de lecturas crudas
-2. **denovo_map.pl**: ensamblaje de novo y catálogo de loci
+1. **process_radtags**: demultiplexa y limpia las lecturas crudas
+2. **denovo_map.pl**: ensambla de novo y genera compendios de loci
 3. **populations**: estadísticas poblacionales y exportación de datos
 
 ---
@@ -41,16 +40,16 @@ Es un archivo sin extensión o de texto o separado por tabulaciones.
 
 **Notas a considerar**
 
-Los barcodes e indexes que se utilizan durante la library prep provienen del manual de ddRADseq de Peterson *et al.* (2012). En el Laboratorio de Molecular y Genética del Cibnor NO se modificaron, se utilizan los originales. 
+Los barcodes e indexes que se utilizan durante la library prep provienen del manual de ddRADseq de Peterson *et al.* (2012). En el Laboratorio de Molecular y Genética del Cibnor estos NO se modificaron, se utilizan siempre los originales. 
 
 En mi caso, para los pools 2 y 3 (individuos de Ecuador y Perú), utilicé los indexes 2 (CGATGT) y 3 (TTAGGC).
 
-
+<img src="imagenes/PCRindex_primers.png" width="400">
 
 ## 1. process_radtags
 
 Demultiplexa las lecturas por individuo a partir de los archivos crudos 
-del secuenciador (pools Novogene) y elimina lecturas de baja calidad.
+del secuenciador Novogene y elimina lecturas de baja calidad.
 
 ```bash
 nohup process_radtags -P -p ./raw_pools -b ./barcodes/barcodes_Pool2y3.txt -o ./demultiplexed -c -q -r
