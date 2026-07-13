@@ -24,8 +24,6 @@ En este caso al server del CIBNOR
 
 <img src="imagenes/Server_connect.png" width="300">
 
----
-
 ## Preparación de los formatos de los archivos
 
 **BARCODEFILE:**
