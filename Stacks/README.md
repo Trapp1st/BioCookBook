@@ -48,7 +48,7 @@ En mi caso, para los pools 2 y 3 (individuos de Ecuador y Perú), utilicé los i
 
 Se tiene que checar que todas las carpetas que se ocupan como datos input deben estar localizadas en el mismo escalón o rama de árbol de directorios.
 
-<img src="imagenes/ExtensionFastq.png" width="500">
+<img src="imagenes/InputDataLocation.png" width="500">
 
 ## 1. process_radtags
 
@@ -87,7 +87,7 @@ nohup process_radtags -P -p ./raw_pools -b ./barcodes/barcodes_Pool2y3.txt -o ./
 
 Los nombres de los archivos puede ser que no sean los adecuados para que Stacks los ejecute. Los archivos crudos deben tener la extensión de .fastq.gz
 
-<img src="imagenes/InputDataLocation.png" width="500">
+<img src="imagenes/ExtensionFastq.png" width="500">
 
 ---
 
