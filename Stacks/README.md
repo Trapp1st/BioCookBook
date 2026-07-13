@@ -111,6 +111,17 @@ Los nombres de los archivos puede ser que no sean los adecuados para que Stacks 
 
 <img src="imagenes/ExtensionFastq.png" width="600">
 
+**Process_radtags output**
+
+Al finalizar el run, se obtuvieron más de 99M de lecturas para cada pool. El tiempo de computo fue de aproximadamente 1 hora x pool. A continuación se muestran los archivos demultiplexados del pool 3:
+
+
+
+
+Una vez concluido el process_radtags, se obtiene:
+
+
+
 ---
 
 ## 2. denovo_map.pl
