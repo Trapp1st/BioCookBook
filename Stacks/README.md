@@ -19,6 +19,8 @@ el software Stacks.
 La estructura del barcodefile es **BARCODE** | **INDEX** | **SAMPLE_NAME**
 Es un archivo sin extensión o de texto o separado por tabulaciones.
 
+![Formato del archivo de barcodes.](imagenes/barcodefile_format.png)
+
 ## 1. process_radtags
 
 Demultiplexa las lecturas por individuo a partir de los archivos crudos 
@@ -41,9 +43,6 @@ nohup process_radtags -P -p ./raw_pools -b ./barcodes/barcodes_Pool2y3.txt -o ./
 - `--inline_index`: índice dentro de la lectura, no como archivo aparte
 - `--renz_1 ecoRI`: enzima corte raro (sitio GAATTC)
 - `--renz_2 mspI`: enzima corte frecuente (CCGG)
-
-
-![Ejemplo de salida process_radtags](imagenes/process_radtags_output.png)
 
 ---
 
