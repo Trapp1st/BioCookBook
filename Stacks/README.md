@@ -15,9 +15,7 @@ el software Stacks.
 En este caso al server del CIBNOR
 1. Abro Hillstone secure connect para conectarme con VPN (si no me encuentro presencialmente en el CIBNOR) y en mi caso hago auto-connect.
 
-<img src="imagenes/vpn_connect.png" width="400">
-
-![Conectarse a la VPN.](imagenes/vpn_connect.png)
+<img src="imagenes/vpn_connect.png" width="300">
 
 2. Me conecto al server usando Putty, escribo la IP del server (200.23.162.240), puerto 22.
 3. Escribo mi usuario y contraseña.
