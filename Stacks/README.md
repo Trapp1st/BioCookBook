@@ -117,7 +117,7 @@ Al finalizar el run, se obtuvieron más de 99M de lecturas para cada pool. El ti
 
 <img src="imagenes/demultiplexed_pool3.png" width="600">
 
-Una vez concluido el process_radtags, se obtiene:
+Una vez concluido el *process_radtags*, se obtuvieron los números siguientes:
 
 <img src="imagenes/process_radtags_finished.png" width="600">
 
