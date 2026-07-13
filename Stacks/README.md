@@ -24,6 +24,12 @@ En este caso al server del CIBNOR
 
 <img src="imagenes/Server_connect.png" width="300">
 
+## Almacenamiento de las lecturas crudas
+
+Dentro del servidor (CIBNOR) las lecturas crudas se deben almacenar en la carpeta de Datos. Entonces tanto el raw_data (cada pool) y el barcodefile, así como el output con las lecturas ya demultiplexadas y limpias, se almacenan en Datos (/Datos/user/raw_pools).
+
+
+
 ## Formatos de los archivos: barcodes & popmap
 
 **BARCODEFILE:**
