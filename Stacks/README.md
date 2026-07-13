@@ -95,11 +95,15 @@ o
 htop
 ```
 
+<img src="imagenes/topcommand.png" width="500">
+
 Para observar si *process_radtags* se congeló y no computó, o si simplemente se quiere saber el pasó en el que va o, en su caso, el desenlace de la corrida, entonces se utiliza el comando:
 
 ```bash
 more process_log
 ```
+
+<img src="imagenes/moreProcess_radtags_log.png" width="500">
 
 **Consideraciones (OJO)**
 
