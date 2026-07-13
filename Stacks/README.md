@@ -130,10 +130,23 @@ catálogo compartido entre individuos.
 
 En un inicio se llevó a cabo tres análisis exploratorios de *denovo_map*. Con base en las lecturas por individuo obtenidas durante el demultiplexado (en la etapa de *process_radtags*), se realizaron tres cortes de filtrado de individuos, ya que el número de lecturas entre las 96 muestras fue heterogéneo. Los cortes fueron para 1) retener aquellos individuos que presentaron igual o mayor a un millón de lecturas (1M), 2) retener aquellos con igual o mayor a 750 millones de lecturas (750K) y 3) igual o mayor a 500 millones (500K).
 
-**1M READS:**
+**1M READS**
 ```bash
-nohup denovo_map.pl --samples ./demultiplexed --popmap ./barcodes/popmap_500k.txt -o ./stacks/R500K -m 5 -M 2 -n 4 -T 10 &> denovo_500K_log &
+nohup denovo_map.pl --samples ./demultiplexed --popmap ./barcodes/popmap_1M.txt -o ./stacks/R1M -m 5 -M 2 -n 4 -T 10 &> denovo_1M_log &
 ```
+
+**750K READS**
+```bash
+nohup denovo_map.pl --samples ./demultiplexed --popmap ./barcodes/popmap_750k.txt -o ./stacks/R750K -m 5 -M 2 -n 4 -T 20 &> denovo_750K_log &
+```
+
+**500K READS**
+```bash
+nohup denovo_map.pl --samples ./demultiplexed --popmap ./barcodes/popmap_500k.txt -o ./stacks/R500K -m 5 -M 2 -n 4 -T 20 &> denovo_500K_log &
+```
+
+**Notas**
+En un inicio 
 
 **Parámetros clave (definidos tras optimización r80, Paris et al. 2017):**
 - `-m 3`: mínimo de lecturas para formar un stack
