@@ -39,6 +39,14 @@ Es un archivo sin extensión o de texto o separado por tabulaciones.
 
 ![Formato del archivo de barcodes.](imagenes/barcodefile_format.png)
 
+**Notas a considerar**
+
+Los barcodes e indexes que se utilizan durante la library prep provienen del manual de ddRADseq de Peterson *et al.* (2012). En el Laboratorio de Molecular y Genética del Cibnor NO se modificaron, se utilizan los originales. 
+
+En mi caso, para los pools 2 y 3 (individuos de Ecuador y Perú), utilicé los indexes 2 (CGATGT) y 3 (TTAGGC).
+
+
+
 ## 1. process_radtags
 
 Demultiplexa las lecturas por individuo a partir de los archivos crudos 
