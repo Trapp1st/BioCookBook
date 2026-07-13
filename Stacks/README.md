@@ -119,7 +119,7 @@ Al finalizar el run, se obtuvieron más de 99M de lecturas para cada pool. El ti
 
 Una vez concluido el *process_radtags*, se obtuvieron los números siguientes:
 
-<img src="imagenes/process_radtags_finished.png" width="600">
+<img src="imagenes/process_radtags_finished.png" width="500">
 
 ---
 
@@ -128,11 +128,11 @@ Una vez concluido el *process_radtags*, se obtuvieron los números siguientes:
 Ensambla los loci de novo (sin genoma de referencia) y construye el 
 catálogo compartido entre individuos.
 
+En un inicio se llevó a cabo tres análisis exploratorios de *denovo_map*. Con base en las lecturas por individuo obtenidas durante el demultiplexado (en la etapa de *process_radtags*), se realizaron tres cortes de filtrado de individuos, ya que el número de lecturas entre las 96 muestras fue heterogéneo. Los cortes fueron para 1) retener aquellos individuos que presentaron igual o mayor a un millón de lecturas (1M), 2) retener aquellos con igual o mayor a 750 millones de lecturas (750K) y 3) igual o mayor a 500 millones (500K).
+
+**1M READS:**
 ```bash
-denovo_map.pl -M 4 -n 3 -m 3 -T 8 \
-  -o ./stacks_output/ \
-  --samples ./samples/ \
-  --popmap ./popmap_RAllinOne.tsv
+nohup denovo_map.pl --samples ./demultiplexed --popmap ./barcodes/popmap_500k.txt -o ./stacks/R500K -m 5 -M 2 -n 4 -T 10 &> denovo_500K_log &
 ```
 
 **Parámetros clave (definidos tras optimización r80, Paris et al. 2017):**
