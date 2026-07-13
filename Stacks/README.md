@@ -48,7 +48,7 @@ En mi caso, para los pools 2 y 3 (individuos de Ecuador y Perú), utilicé los i
 
 Se tiene que checar que todas las carpetas que se ocupan como datos input deben estar localizadas en el mismo escalón o rama de árbol de directorios.
 
-![Input data at same directory lvl.](imagenes/inputdata_atsamelevel.png)
+<img src="imagenes/InputDataLocation.png" width="400">
 
 ## 1. process_radtags
 
