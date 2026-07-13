@@ -83,6 +83,12 @@ nohup process_radtags -P -p ./raw_pools -b ./barcodes/barcodes_Pool2y3.txt -o ./
 - `nohup`: permite dejar el análisis en el background. Si uno se va a tomar un café y cierra la PC, el server sigue computando el run.
 - `process_log`: genera las notificaciones del análisis.
 
+**Consideraciones (OJO)**
+
+Los nombres de los archivos puede ser que no sean los adecuados para que Stacks los ejecute. Los archivos crudos deben tener la extensión de .fastq.gz
+
+<img src="imagenes/InputDataLocation.png" width="500">
+
 ---
 
 ## 2. denovo_map.pl
