@@ -83,9 +83,27 @@ nohup process_radtags -P -p ./raw_pools -b ./barcodes/barcodes_Pool2y3.txt -o ./
 - `nohup`: permite dejar el análisis en el background. Si uno se va a tomar un café y cierra la PC, el server sigue computando el run.
 - `process_log`: genera las notificaciones del análisis.
 
+Para checar los procesos actuales del servidor que están corriendo:
+
+```bash
+top
+```
+
+o
+
+```bash
+htop
+```
+
+Para observar si process_radtags  se congeló y no computó:
+
+```bash
+more process_log
+```
+
 **Consideraciones (OJO)**
 
-Los nombres de los archivos puede ser que no sean los adecuados para que Stacks los ejecute. Los archivos crudos deben tener la extensión de .fastq.gz
+Los nombres de los archivos puede ser que no sean los adecuados para que Stacks los ejecute. Los archivos crudos deben tener la extensión de .fastq.gz y NO .fq.gz.
 
 <img src="imagenes/ExtensionFastq.png" width="600">
 
