@@ -95,7 +95,7 @@ o
 htop
 ```
 
-Para observar si process_radtags  se congeló y no computó:
+Para observar si process_radtags  se congeló y no computó, o si simplemente se quiere observar el pasó en el que va o en su caso, el desenlace de la corrida, se utiliza el comando:
 
 ```bash
 more process_log
