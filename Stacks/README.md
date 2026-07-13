@@ -160,6 +160,7 @@ Posteriormente, cuando obtenga las secuencias del total de pools para *O. mimus*
 
 Es importante mencionar que los valores de **-m**, **-M** y **-n**, son modificables respecto a los datos obtenidos de la secuenciacion y su procesamiento con el pipeline de stacks. Por eso es que para diferentes especies, estos números son distintos:
 
+<img src="imagenes/Denovo_parametros_ejemplos.png" width="600">
 
 
 Corrida unificada "RAllinOne" — catálogo construido con las 10 
