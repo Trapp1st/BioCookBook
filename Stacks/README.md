@@ -36,7 +36,7 @@ La estructura del barcodefile es **BARCODE** | **INDEX** | **SAMPLE_NAME**
 
 Es un archivo sin extensión o de texto o separado por tabulaciones.
 
-![Formato del archivo de barcodes.](imagenes/barcodefile_format.png)
+<img src="imagenes/barcodefile_format.png" width="400">
 
 **Notas a considerar**
 
