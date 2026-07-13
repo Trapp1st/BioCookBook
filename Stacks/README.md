@@ -10,6 +10,14 @@ el software Stacks.
 2. **denovo_map.pl**: ensamblaje de novo y catálogo de loci
 3. **populations**: estadísticas poblacionales y exportación de datos
 
+¿Cómo entro al servidor?
+
+En este caso al server del CIBNOR
+1. Abro Hillstone secure connect para conectarme con VPN (si no me encuentro presencialmente en el CIBNOR) y en mi caso hago auto-connect.
+2. Me conecto al server usando Putty, escribo la IP del server (200.23.162.240), puerto 22.
+3. Escribo mi usuario y contraseña.
+
+
 ---
 
 ## Preparación de los formatos de los archivos
