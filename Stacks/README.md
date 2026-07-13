@@ -20,7 +20,7 @@ En este caso al server del CIBNOR
 2. Me conecto al server usando Putty, escribo la IP del server (200.23.162.240), puerto 22.
 3. Escribo mi usuario y contraseña.
 
-![Conectarse al servidor del CIBNOR a través de Putty.](imagenes/Server_connect.png)
+<img src="imagenes/Server_connect.png" width="300">
 
 ---
 
