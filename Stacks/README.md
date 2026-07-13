@@ -1,8 +1,7 @@
 
 # Pipeline bioinformático con Stacks para *Octopus mimus*
 
-Pipeline para el procesamiento de datos ddRADseq de *Octopus mimus*, 
-desde las lecturas crudas hasta las estadísticas poblacionales, usando 
+Este es un pipeline para el procesamiento de datos ddRADseq de *Octopus mimus*, desde las lecturas crudas hasta las estadísticas poblacionales, usando 
 el software Stacks. 
 
 ## Resumen del pipeline
@@ -17,6 +16,7 @@ el software Stacks.
 
 **BARCODEFILE:**
 La estructura del barcodefile es **BARCODE** | **INDEX** | **SAMPLE_NAME**
+
 Es un archivo sin extensión o de texto o separado por tabulaciones.
 
 ![Formato del archivo de barcodes.](imagenes/barcodefile_format.png)
