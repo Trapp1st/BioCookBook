@@ -145,14 +145,22 @@ nohup denovo_map.pl --samples ./demultiplexed --popmap ./barcodes/popmap_750k.tx
 nohup denovo_map.pl --samples ./demultiplexed --popmap ./barcodes/popmap_500k.txt -o ./stacks/R500K -m 5 -M 2 -n 4 -T 20 &> denovo_500K_log &
 ```
 
+**Parámetros clave:**
+- `-m 5`: mínimo número de lecturas idénticas para formar un stack
+- `-M 2`: número máximo de mismatches permitidos entre stacks de un mismo individuo
+- `-n 4`: número máximo de mismatches permitidos entre individuos al construir el catálogo
+
 **Notas**
 
 En una primera instancia, los tres cortes se corrieron al mismo tiempo. Sin embargo, los runs de 1M y 750K abortaron el análisis por falta de memoria del server. 750K si generó la corrida completa. Para evitar que las tres cortes compitieran por recursos de memoria, se corrió una por una. Correr *denovo.map* tardó en mi caso aproximadamente >9 horas x corrida, esto depende en parte del número de muchos factores, como el número de reads por individuo, la parametrización que se utilice, el número de threads. Para los análisis de 750K y 1M, utilicé 20 threads porque ningún otro usuario del servidor estaba utilizándolo. Importante revisar antes de enviar cada run.
 
-**Parámetros clave (definidos tras optimización r80, Paris et al. 2017):**
-- `-m 3`: mínimo de lecturas para formar un stack
-- `-M 4`: mismatches permitidos entre stacks de un mismo individuo
-- `-n 3`: mismatches permitidos entre individuos al construir el catálogo
+**Consideraciones**
+
+Posteriormente, cuando obtenga las secuencias del total de pools para *O. mimus* y con el objetivo de optimizar el ensamblaje de novo, evaluaré sistemáticamente diferentes combinaciones de parámetro usando RADstackshelpR (DeRaad, 2021; https://github.com/DevonDeRaad/RADstackshelpR). Por ahora me quedo con la parametrización estándar.
+
+Es importante mencionar que los valores de **-m**, **-M** y **-n**, son modificables respecto a los datos obtenidos de la secuenciacion y su procesamiento con el pipeline de stacks. Por eso es que para diferentes especies, estos números son distintos:
+
+
 
 Corrida unificada "RAllinOne" — catálogo construido con las 10 
 localidades combinadas.
