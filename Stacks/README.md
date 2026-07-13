@@ -103,7 +103,7 @@ more process_log
 
 **Consideraciones (OJO)**
 
-Los nombres de los archivos puede ser que no sean los adecuados para que Stacks los ejecute. Los archivos crudos deben tener la extensión de .fastq.gz y NO .fq.gz.
+Los nombres de los archivos puede ser que no sean los adecuados para que Stacks los ejecute. Los archivos crudos deben tener la extensión de .fastq.gz y NO .fq.gz (como se muestra en la siguiente imagen).
 
 <img src="imagenes/ExtensionFastq.png" width="600">
 
