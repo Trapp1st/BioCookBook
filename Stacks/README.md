@@ -46,10 +46,18 @@ En mi caso, para los pools 2 y 3 (individuos de Ecuador y Perú), utilicé los i
 
 <img src="imagenes/PCRindex_primers.png" width="400">
 
+Se tiene que checar que todas las carpetas que se ocupan como datos input deben estar localizadas en el mismo escalón o rama de árbol de directorios. 
+
 ## 1. process_radtags
 
 Demultiplexa las lecturas por individuo a partir de los archivos crudos 
 del secuenciador Novogene y elimina lecturas de baja calidad.
+
+Primeramente se llama al ambiente de stacks.
+
+```bash
+conda activate stacks
+```
 
 ```bash
 nohup process_radtags -P -p ./raw_pools -b ./barcodes/barcodes_Pool2y3.txt -o ./demultiplexed -c -q -r
@@ -68,6 +76,10 @@ nohup process_radtags -P -p ./raw_pools -b ./barcodes/barcodes_Pool2y3.txt -o ./
 - `--inline_index`: índice dentro de la lectura, no como archivo aparte
 - `--renz_1 ecoRI`: enzima corte raro (sitio GAATTC)
 - `--renz_2 mspI`: enzima corte frecuente (CCGG)
+
+**Notas**
+- `nohup`: permite dejar el análisis en el background. Si uno se va a tomar un café y cierra la PC, el server sigue computando el run.
+- `process_log`: genera las notificaciones del análisis.
 
 ---
 
