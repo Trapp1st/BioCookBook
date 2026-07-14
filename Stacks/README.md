@@ -128,6 +128,8 @@ Una vez concluido el *process_radtags*, se obtuvieron los números siguientes:
 Ensambla los loci de novo (sin genoma de referencia) y construye el 
 catálogo compartido entre individuos.
 
+
+
 En un inicio se llevó a cabo tres análisis exploratorios de *denovo_map*. Con base en las lecturas por individuo obtenidas durante el demultiplexado (en la etapa de *process_radtags*), se realizaron tres cortes de filtrado de individuos, ya que el número de lecturas entre las 96 muestras fue heterogéneo. Los cortes fueron para 1) retener aquellos individuos que presentaron igual o mayor a un millón de lecturas (1M), 2) retener aquellos con igual o mayor a 750 millones de lecturas (750K) y 3) igual o mayor a 500 millones (500K).
 
 **1M READS**
@@ -156,9 +158,13 @@ En una primera instancia, los tres cortes se corrieron al mismo tiempo. Sin emba
 
 **Output**
 
-Se generaron los archivos siguientes del run de 1M reads:
+Se generaron los archivos siguientes del run de 1M reads (/Datos/smunguia/stacks/R1M):
 
-<img src="imagenes/Denovo_parametros_ejemplos.png" width="600">
+<img src="Output_1Mreads_archivos.png" width="600">
+
+Revisé el population.log. Genera diferentes estadísticas: número total de loci retenidos, número de sitios variantes; y estadísticas poblacionales por localidad (diversidad nucleotídica, sitios polimórficos, alelos privados, etc.).
+
+<img src="PopLOG_Locality_R1M.png" width="600">
 
 **Consideraciones**
 
