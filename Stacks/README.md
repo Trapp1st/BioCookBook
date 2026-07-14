@@ -158,13 +158,15 @@ En una primera instancia, los tres cortes se corrieron al mismo tiempo. Sin emba
 
 **Output**
 
-Se generaron los archivos siguientes del run de 1M reads (/Datos/smunguia/stacks/R1M):
+EJEMPLO. Se generaron los archivos resultantes del run de 1M reads (/Datos/smunguia/stacks/R1M):
 
-<img src="imagenes/Output_1Mreads_archivos.png" width="500">
+<img src="imagenes/Output_1Mreads_archivos.png" width="600">
 
-Revisé el population.log. Genera diferentes estadísticas: número total de loci retenidos, número de sitios variantes; y estadísticas poblacionales por localidad (diversidad nucleotídica, sitios polimórficos, alelos privados, etc.).
+Revisé el archivo *population.log*, el cual compila diferentes estadísticas, como el número total de loci retenidos, el número de sitios variantes; y algunas estadísticas poblacionales por localidad (e.g. diversidad nucleotídica, sitios polimórficos, alelos privados, etc.).
 
-<img src="imagenes/PopLOG_Locality_R1M.png" width="500">
+<img src="imagenes/PopLOG_Locality_R1M.png" width="600">
+
+Asimismo, para las otras dos cortes de 500K y 750K reads, se generaron los archivos output correspondientes (no se muestran en este readme).
 
 **Consideraciones**
 
