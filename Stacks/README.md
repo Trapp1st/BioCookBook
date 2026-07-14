@@ -9,6 +9,8 @@ Este es un pipeline para el procesamiento de datos ddRADseq de *Octopus mimus*, 
 2. **denovo_map.pl**: ensambla de novo y genera compendios de loci
 3. **populations**: estadísticas poblacionales y exportación de datos
 
+<img src="imagenes/vpn_connect.png" width="200">
+
 ---
 
 ## ¿Cómo entro al servidor?
@@ -25,7 +27,7 @@ En este caso al server del CIBNOR
 
 ## Almacenamiento de las lecturas crudas
 
-Dentro del servidor (CIBNOR) las lecturas crudas se deben almacenar en la carpeta de Datos. Entonces tanto el raw_data (cada pool) y el barcodefile, así como el output con las lecturas ya demultiplexadas y limpias, se almacenan en Datos (/Datos/user/raw_pools).
+Dentro del servidor (CIBNOR) las lecturas crudas se deben almacenar en la carpeta de Datos, entonces tanto el raw_data (cada pool) y el barcodefile, así como el output con las lecturas demultiplexadas y limpias, se almacenan en Datos (/Datos/user/raw_pools).
 
 <img src="imagenes/raw_pools.png" width="400">
 
@@ -34,7 +36,7 @@ Dentro del servidor (CIBNOR) las lecturas crudas se deben almacenar en la carpet
 **BARCODEFILE:**
 La estructura del barcodefile es **BARCODE** | **INDEX** | **SAMPLE_NAME**
 
-Es un archivo sin extensión o de texto o separado por tabulaciones.
+Debe ser un archivo sin extensión o de texto o separado por tabulaciones.
 
 <img src="imagenes/barcodefile_format.png" width="500">
 
