@@ -154,6 +154,12 @@ nohup denovo_map.pl --samples ./demultiplexed --popmap ./barcodes/popmap_500k.tx
 
 En una primera instancia, los tres cortes se corrieron al mismo tiempo. Sin embargo, los runs de 1M y 750K abortaron el análisis por falta de memoria del server. 750K si generó la corrida completa. Para evitar que las tres cortes compitieran por recursos de memoria, se corrió una por una. Correr *denovo.map* tardó en mi caso aproximadamente >9 horas x corrida, esto depende en parte del número de muchos factores, como el número de reads por individuo, la parametrización que se utilice, el número de threads. Para los análisis de 750K y 1M, utilicé 20 threads porque ningún otro usuario del servidor estaba utilizándolo. Importante revisar antes de enviar cada run.
 
+**Output**
+
+Se generaron los archivos siguientes del run de 1M reads:
+
+<img src="imagenes/Denovo_parametros_ejemplos.png" width="600">
+
 **Consideraciones**
 
 Posteriormente, cuando obtenga las secuencias del total de pools para *O. mimus* y con el objetivo de optimizar el ensamblaje de novo, evaluaré sistemáticamente diferentes combinaciones de parámetro usando RADstackshelpR (DeRaad, 2021; https://github.com/DevonDeRaad/RADstackshelpR). Por ahora me quedo con la parametrización estándar.
