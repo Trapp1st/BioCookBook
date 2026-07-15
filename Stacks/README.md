@@ -228,24 +228,33 @@ Es importante mencionar que los valores de **-m**, **-M** y **-n**, son modifica
 Genera estadísticas poblacionales, filtra loci según parámetros de 
 representación, y exporta formatos de salida (VCF, structure, etc.).
 
+<img src="imagenes/PopulationsModule_initiate.png" width="500">
+
 Generé dos runs con diferentes valores de -p. El primero fue una -p igual a 7. Este es un número muy exigente porque los loci deben estar presentes en las 7 poblaciones (EP, LI, ESR, AN, IA, PLBLO, BS). El primer comando utilizado fue:
 
 ```bash
 populations -P ./stacks/RAllinOne_m5M2n4 --popmap ./barcodes/PopMap_aLL_m5M2n4.tsv -O ./populations/All_m5M2n4/ -p 7 -r 0.80 -t 5 --min-maf 0.05 --write-single-snp --genepop --vcf --fasta-loci --fasta-samples
 ```
 
-**Notas:**
+**Parámetros:**
 - `-r 0.8`: el locus debe estar presente en el 80% de los individuos por población (filtro r80)
 - `-p 7`: número de poblaciones en las que un locus debe estar presente para conservarse en el análisis.
 - `--min-maf 0.05`: filtro de frecuencia alélica menor mínima
-   *Por SNP, se calcula la frencuencia del alelo menos común en todo el conjunto muestreado, el valor de 0.05 nos dice que cualquier alelo menor tenga una frencuencia menor a 5% se descarta. Este umbral es estándar.*
 
+  *Por SNP, se calcula la frencuencia del alelo menos común en todo el conjunto muestreado, el valor de 0.05 nos dice que cualquier alelo menor tenga una frencuencia menor a 5% se descarta. Este umbral es estándar.*
 
+Como  primer output, se obtuvo un número bajo de SNPs por población:
 
+<img src="imagenes/Pop_statistics.png" width="500">
+
+Reduje el número de -p a 5
   
-**Notas importantes**
+```bash
+populations -P ./stacks/RAllinOne_m5M2n4 --popmap ./barcodes/PopMap_aLL_m5M2n4.tsv -O ./populations/All_m5M2n4/ -p 5 -r 0.80 -t 5 --min-maf 0.05 --write-single-snp --genepop --vcf --fasta-loci --fasta-samples
+```
 
-Las estadísticas poblacionales más robustas se generan del output de este módulo.
+De un número bajo de SNPs (-p 7) aumentó a más de 2000 SNPs (-p 5). Sin embargo, ESR (una de las localidades fusionada con organismos de Santa Rosa y Salinas) me generó únicamente 91 SNPs.
+
 
 
 ---
