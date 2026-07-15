@@ -195,7 +195,9 @@ En mi caso, revisé valores esperados "estándar". Por ejemplo, un número alto 
 <img src="imagenes/DenovoAll_output.png" width="600">
 
 
-Al finalizar el conteo, mi nuevo PopMap se construyó con 75 individuos.
+Al finalizar el conteo, mi nuevo PopMap se construyó con 75 individuos. Dado que la localidad **Lobitos (LOB)** originalmente solamente contaba con 3 individuos, con la depuración por número de reads y otras estadísitcas, se quedo en **n = 1**. Lo mismo con **Los Órganos (LO)**, pese a que contaba con más de 5 indivduos, la depuración redujo el número a **n = 1**. En el caso de **Santa Rosa (SR)**, una localidad problemática (casos límite de no-depuración), su n fue igual a **4**. Bajo este contexto, se decidió fusionar localidades/poblaciones con base en la distancia geográfica corta entre localidades muestreadas y el número de muestras totales por localidad. Por ende, LOB y LO se fusionó con Punta Sal (PS; n = 8) y SR con Salinas (E). A continuación se muestra una tabla con el número total de muestras recuperadas y un mapa geográfico de las localidades (Pliego-Cárdenas et al., 2021).
+
+
 
 **Consideraciones**
 
@@ -235,14 +237,9 @@ Las estadísticas poblacionales más robustas se generan del output de este mód
 
 ---
 
-## Problemas conocidos / decisiones tomadas
+## Problemas conocidos 
 
-- Individuos **LI17** y **LI3** mostraron >40% de missing data — 
-  evaluados para exclusión.
-- Localidades de bajo n (Los Órganos, Lobitos) — en evaluación para 
-  fusionar con localidades vecinas antes de re-correr denovo_map.
-- RAM: evitar correr cstacks en simultáneo con múltiples hilos si el 
-  servidor tiene memoria limitada (crashes observados).
+- Pool
 
 ## Referencias
 
