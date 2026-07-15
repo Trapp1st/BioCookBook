@@ -263,7 +263,7 @@ De un número bajo de SNPs (-p 7) aumentó a más de 2000 SNPs (-p 5). Sin embar
 
 <img src="imagenes/Metrics_pop_p5.png" width="300">
 
-<img src="imagenes/Metrics2_pop_p5.png" width="500">
+<img src="imagenes/Metrics2_pop_p5.png" width="600">
 
 
 Se revisaron superficialmente los estadísticos de diversidad sin haber analizado los missing data por individuo y locus. El FIS fue alto para ESR (posiblemente debido a un error técnico y no a una realidad biológica). AN por el contrario, mostró casi un equilibrio completo de Hardy-Weinberg, quizás sea sesgo.
@@ -289,11 +289,15 @@ sort -k5 -n -r missing_indv.imiss | head -20
 
 **Output de missing data por individuo**
 
+Con base en el % de missing data por individuo, se depuró más de la mitad de la base de datos, únicamente aceptando hasta un 30% de MD. En otros estudios, este número también se acepta.
+
 <img src="imagenes/MissingData_ind_50-90.png" width="600">
 
 <img src="imagenes/MD_ind_0-30.png" width="600">
 
+Analizando la tabla, EP, LI y SR mostraron el mayor número de MD. Estas tres localidades formaron parte de un mismo pool. En este sentido, prácticamente el pool completo obtuvo mucho MD, posiblemente por error técnico.
 
+Posteriormente, generé un nuevo PopMap únicamente incluyendo aquellos individuos que presentaron <30% de MD. Corrí una vez más el módulo de populations. Al remover el pool problemático, aumentó el número de SNPs.
 
 ---
 
