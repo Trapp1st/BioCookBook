@@ -259,7 +259,12 @@ populations -P ./stacks/RAllinOne_m5M2n4 --popmap ./barcodes/PopMap_aLL_m5M2n4.t
 
 De un número bajo de SNPs (-p 7) aumentó a más de 2000 SNPs (-p 5). Sin embargo, ESR (una de las localidades fusionada con organismos de Santa Rosa y Salinas) me generó únicamente 91 SNPs.
 
-<img src="imagenes/Pop_statistics.png" width="600">
+<img src="imagenes/Pop_statistics.png" width="500">
+
+<img src="imagenes/Metrics_pop_p5.png" width="300">
+
+<img src="imagenes/Metrics2_pop_p5.png" width="500">
+
 
 Se revisaron superficialmente los estadísticos de diversidad sin haber analizado los missing data por individuo y locus. El FIS fue alto para ESR (posiblemente debido a un error técnico y no a una realidad biológica). AN por el contrario, mostró casi un equilibrio completo de Hardy-Weinberg, quizás sea sesgo.
 
@@ -275,9 +280,18 @@ vcftools --vcf ./populations/All_m5M2n4_p5/populations.snps.vcf --missing-indv -
 
 <img src="imagenes/VCF_xindiv_p5.png" width="600">
 
+Para revisar aquellos individuos con más missing data:
+
 ```bash
 sort -k5 -n -r missing_indv.imiss | head -20
 ```
+
+
+**Output de missing data por individuo**
+
+<img src="imagenes/MissingData_ind_50-90.png" width="600">
+
+<img src="imagenes/MD_ind_0-30.png" width="600">
 
 
 
