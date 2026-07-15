@@ -183,7 +183,12 @@ nohup denovo_map.pl --samples ./demultiplexed --popmap ./barcodes/PopMap_sinFilt
 
 <img src="imagenes/RAllinOne_m5M2n4_files.png" width="600">
 
+**Output de *denovo_all_log**
+
 Al finalizar la corrida, se generan también archivos *populations.log* pero estos son sólo para revisar en una primera instancia los datos. No son las estadísticas finales. Esas se obtienen con el siguiente módulo de *populations*.
+
+
+
 
 **Consideraciones**
 
@@ -201,6 +206,8 @@ Es importante mencionar que los valores de **-m**, **-M** y **-n**, son modifica
 Genera estadísticas poblacionales, filtra loci según parámetros de 
 representación, y exporta formatos de salida (VCF, structure, etc.).
 
+Generé dos runs con diferentes valores de -p. El primero fue una -p igual a 7. Este es un número muy exigente porque los loci deben estar presentes en las 7 poblaciones (EP, LI, ESR, AN, IA, PLBLO, BS). El primer comando utilizado fue:
+
 ```bash
 populations -P ./stacks/RAllinOne_m5M2n4 --popmap ./barcodes/PopMap_aLL_m5M2n4.tsv -O ./populations/All_m5M2n4/ -p 7 -r 0.80 -t 5 --min-maf 0.05 --write-single-snp --genepop --vcf --fasta-loci --fasta-samples
 ```
@@ -210,10 +217,14 @@ populations -P ./stacks/RAllinOne_m5M2n4 --popmap ./barcodes/PopMap_aLL_m5M2n4.t
 - `-p 7`: número de poblaciones en las que un locus debe estar presente para conservarse en el análisis.
 - `--min-maf 0.05`: filtro de frecuencia alélica menor mínima
    *Por SNP, se calcula la frencuencia del alelo menos común en todo el conjunto muestreado, el valor de 0.05 nos dice que cualquier alelo menor tenga una frencuencia menor a 5% se descarta. Este umbral es estándar.*
+
+
+
   
+**Notas importantes**
 
+Las estadísticas poblacionales más robustas se generan del output de este módulo.
 
-![Estadísticas de populations](imagenes/populations_stats.png)
 
 ---
 
