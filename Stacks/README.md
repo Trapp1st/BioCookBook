@@ -173,7 +173,7 @@ Asimismo, para las otras dos cortes de 500K y 750K reads, se generaron los archi
 
 ---
 
-***Segunda aproximación: correr *denovo_map.pl* sin filtros de número de lecturas y en el módulo de *populations* ir depurando la base de datos***
+**Segunda aproximación: correr *denovo_map.pl* sin filtros de número de lecturas y en el módulo de *populations* ir depurando la base de datos**
 
 Para esto, se generó un nuevo archivo Popmap incluyendo a todos los individuos; los valores de la parametrización no se modificaron (-m, -M, -n). Se ejecutó el siguiente comando:
 
@@ -183,7 +183,7 @@ nohup denovo_map.pl --samples ./demultiplexed --popmap ./barcodes/PopMap_sinFilt
 
 <img src="imagenes/RAllinOne_m5M2n4_files.png" width="600">
 
-
+Al finalizar la corrida, se generan también archivos *populations.log* pero estos son sólo para revisar en una primera instancia los datos. No son las estadísticas finales. Esas se obtienen con el siguiente módulo de *populations*.
 
 **Consideraciones**
 
@@ -194,11 +194,6 @@ Es importante mencionar que los valores de **-m**, **-M** y **-n**, son modifica
 <img src="imagenes/Denovo_parametros_ejemplos.png" width="600">
 
 
-Corrida unificada "RAllinOne" — catálogo construido con las 10 
-localidades combinadas.
-
-![Resumen del catálogo](imagenes/denovo_map_summary.png)
-
 ---
 
 ## 3. populations
@@ -207,15 +202,16 @@ Genera estadísticas poblacionales, filtra loci según parámetros de
 representación, y exporta formatos de salida (VCF, structure, etc.).
 
 ```bash
-populations -P ./stacks_output/ -M ./popmap_RAllinOne.tsv \
-  -r 0.8 --vcf --genepop -t 8
+populations -P ./stacks/RAllinOne_m5M2n4 --popmap ./barcodes/PopMap_aLL_m5M2n4.tsv -O ./populations/All_m5M2n4/ -p 7 -r 0.80 -t 5 --min-maf 0.05 --write-single-snp --genepop --vcf --fasta-loci --fasta-samples
 ```
 
 **Notas:**
-- `-r 0.8`: el locus debe estar presente en el 80% de los individuos 
-  por población (filtro r80)
-- Salidas usadas después para DAPC (adegenet) y análisis de missing 
-  data (VCFtools)
+- `-r 0.8`: el locus debe estar presente en el 80% de los individuos por población (filtro r80)
+- `-p 7`: número de poblaciones en las que un locus debe estar presente para conservarse en el análisis.
+- `--min-maf 0.05`: filtro de frecuencia alélica menor mínima*
+* *Por SNP, se calcula la frencuencia del alelo menos común en todo el conjunto muestreado, el valor de 0.05 nos dice que cualquier alelo menor tenga una frencuencia menor a 5% se descarta. Este umbral es estándar.*
+  
+
 
 ![Estadísticas de populations](imagenes/populations_stats.png)
 
