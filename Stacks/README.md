@@ -185,10 +185,17 @@ nohup denovo_map.pl --samples ./demultiplexed --popmap ./barcodes/PopMap_sinFilt
 
 **Output de *denovo_all_log**
 
-Al finalizar la corrida, se generan también archivos *populations.log* pero estos son sólo para revisar en una primera instancia los datos. No son las estadísticas finales. Esas se obtienen con el siguiente módulo de *populations*.
+Al finalizar la corrida, se generaron  archivos *populations.log* pero estos son sólo para revisar en una primera instancia los datos. No son las estadísticas finales. Esas se obtienen con el siguiente módulo de *populations*.
+
+En este paso importa observar la tabla de estadísticas de loci por individuo. Permite conocer el número total de loci ensamblados, la cobertura (x), el número de lecturas y el porcentaje de retención por individuo.
+
+En mi caso, revisé valores esperados "estándar". Por ejemplo, un número alto de loci ensamblados (>10,000), una cobertura >10x, un número alto de lecturas (>1M), al menos un 80% de retención. Sin embargo, esto no fue el caso para ~21 individuos, ya que estos presentaron, en casos particulares <8 de % de retención, ~10K de reads, pocos loci ensamblados y baja cobertura. Se descartaron para generar un nuevo PopMap. En algunos casos, sí retuve ciertos individuos potenciales pese a que no todas sus estadísticas resultaron buenas. Por ejemplo, algunos individuos presentaron pocas reads (~500K), muy buena cobertura (>20x) y un número considerable de loci retenidos (~30K). 
 
 
+<img src="imagenes/DenovoAll_output.png" width="600">
 
+
+Al finalizar el conteo, mi nuevo PopMap se construyó con 75 individuos.
 
 **Consideraciones**
 
