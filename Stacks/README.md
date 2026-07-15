@@ -299,6 +299,27 @@ Analizando la tabla, EP, LI y SR mostraron el mayor número de MD. Estas tres lo
 
 Posteriormente, generé un nuevo PopMap únicamente incluyendo aquellos individuos que presentaron <30% de MD. Corrí una vez más el módulo de populations. Al remover el pool problemático, aumentó el número de SNPs.
 
+<img src="imagenes/Pop_stats_final.png" width="600">
+
+Corrí missing data por individuo:
+
+<img src="imagenes/vcf_xind_final.png" width="600">
+
+Corrí missing data por locus:
+
+```bash
+vcftools --vcf populations.snps.vcf --missing-site --out missing_site_limpio
+```
+
+```bash
+sort -k6 -n -r missing_site_limpio.lmiss | head -20
+```
+
+<img src="imagenes/vcf_xlocus.png" width="600">
+
+
+El nuevo dataset (n = 34, 4 poblaciones, correspondiente al pool 3) resultó estar más "limpio". BS2 fue el individuo que rebasó los 30% de MD. Sin embargo, lo consideré ya que está justo en el límite del umbral aplicado. El resto de individuos se mantuvieron por debajo de 30%. Respecto al MD x locus, está por debajo del 15%. Se considera aceptable.
+
 ---
 
 
