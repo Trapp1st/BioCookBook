@@ -171,6 +171,16 @@ Revisé el archivo *population.log*, el cual compila diferentes estadísticas, c
 
 Asimismo, para las otras dos cortes de 500K y 750K reads, se generaron los archivos output correspondientes (no se muestran en este readme).
 
+**Segunda aproximación: correr *denovo_map.pl* sin filtros de número de lecturas y en el módulo de *populations* ir depurando la base de datos**
+
+Para esto, se generó un nuevo archivo Popmap incluyendo a todos los individuos; los valores de la parametrización no se modificaron (-m, -M, -n). Se ejecutó el siguiente comando:
+
+```bash
+nohup denovo_map.pl --samples ./demultiplexed --popmap ./barcodes/PopMap_sinFiltros.tsv -o ./stacks/RAllinOne -m 5 -M 2 -n 4 -T 10 &> denovo_all_log &
+```
+
+
+
 **Consideraciones**
 
 Posteriormente, cuando obtenga las secuencias del total de pools para *O. mimus* y con el objetivo de optimizar el ensamblaje de novo, evaluaré sistemáticamente diferentes combinaciones de parámetro usando RADstackshelpR (DeRaad, 2021; https://github.com/DevonDeRaad/RADstackshelpR). Por ahora me quedo con la parametrización estándar.
