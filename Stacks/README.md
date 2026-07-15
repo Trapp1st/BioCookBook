@@ -195,7 +195,20 @@ En mi caso, revisé valores esperados "estándar". Por ejemplo, un número alto 
 <img src="imagenes/DenovoAll_output.png" width="600">
 
 
-Al finalizar el conteo, mi nuevo PopMap se construyó con 75 individuos. Dado que la localidad **Lobitos (LOB)** originalmente solamente contaba con 3 individuos, con la depuración por número de reads y otras estadísitcas, se quedo en **n = 1**. Lo mismo con **Los Órganos (LO)**, pese a que contaba con más de 5 indivduos, la depuración redujo el número a **n = 1**. En el caso de **Santa Rosa (SR)**, una localidad problemática (casos límite de no-depuración), su n fue igual a **4**. Bajo este contexto, se decidió fusionar localidades/poblaciones con base en la distancia geográfica corta entre localidades muestreadas y el número de muestras totales por localidad. Por ende, LOB y LO se fusionó con Punta Sal (PS; n = 8) y SR con Salinas (E). A continuación se muestra una tabla con el número total de muestras recuperadas y un mapa geográfico de las localidades (Pliego-Cárdenas et al., 2021).
+Al finalizar el conteo, mi nuevo PopMap se construyó con 75 individuos. Dado que la localidad **Lobitos (LOB)** originalmente solamente contaba con 3 individuos, con la depuración por número de reads y otras estadísitcas, se quedo en **n = 1**. Lo mismo con **Los Órganos (LO)**, pese a que contaba con más de 5 indivduos, la depuración redujo el número a **n = 1**. En el caso de **Santa Rosa (SR)**, una localidad problemática (casos límite de no-depuración), su n fue igual a **4**. Bajo este contexto, se decidió fusionar localidades/poblaciones con base en la distancia geográfica corta entre localidades muestreadas y el número de muestras totales por localidad. Por ende, LOB y LO se fusionó con Punta Sal (PS; n = 8) y SR con Salinas (E).
+
+<img src="imagenes/Claves_localidades.png" width="500">
+
+A continuación se muestra una tabla con el número total de muestras recuperadas: 
+
+
+<img src="imagenes/Fusion_localidades.png" width="500">
+
+
+Un mapa geográfico de las localidades (Pliego-Cárdenas et al., 2021).
+
+
+<img src="imagenes/mapaGeo_Loc.png" width="500">
 
 
 
