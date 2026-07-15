@@ -275,13 +275,12 @@ vcftools --vcf ./populations/All_m5M2n4_p5/populations.snps.vcf --missing-indv -
 
 <img src="imagenes/VCF_xindiv_p5.png" width="600">
 
+```bash
+sort -k5 -n -r missing_indv.imiss | head -20
+```
+
+
+
 ---
 
-## Problemas conocidos 
 
-- Pool
-
-## Referencias
-
-- Paris, J.R., Stevens, J.R., Catchen, J.M. (2017). Lost in parameter 
-  space: a road map for stacks. *Methods in Ecology and Evolution*.
