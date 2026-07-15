@@ -245,7 +245,7 @@ populations -P ./stacks/RAllinOne_m5M2n4 --popmap ./barcodes/PopMap_aLL_m5M2n4.t
 
 Como  primer output, se obtuvo un número bajo de SNPs por población:
 
-<img src="imagenes/Pop_statistics.png" width="500">
+<img src="imagenes/Pop_statistics.png" width="600">
 
 Reduje el número de -p a 5
   
@@ -255,7 +255,13 @@ populations -P ./stacks/RAllinOne_m5M2n4 --popmap ./barcodes/PopMap_aLL_m5M2n4.t
 
 De un número bajo de SNPs (-p 7) aumentó a más de 2000 SNPs (-p 5). Sin embargo, ESR (una de las localidades fusionada con organismos de Santa Rosa y Salinas) me generó únicamente 91 SNPs.
 
+<img src="imagenes/Pop_statistics.png" width="600">
 
+Se revisaron superficialmente los estadísticos de diversidad sin haber analizado los missing data por individuo y locus. El FIS fue alto para ESR (posiblemente debido a un error técnico y no a una realidad biológica). AN por el contrario, mostró casi un equilibrio completo de Hardy-Weinberg, quizás sea sesgo.
+
+---
+
+## Análisis del missing data
 
 ---
 
