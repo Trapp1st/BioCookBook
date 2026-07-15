@@ -263,6 +263,12 @@ Se revisaron superficialmente los estadísticos de diversidad sin haber analizad
 
 ## Análisis del missing data
 
+**Por indviduo: -p 5**
+
+```bash
+vcftools --vcf ./populations/All_m5M2n4_p5/populations.snps.vcf --missing-indv --out ./populations/All_m5M2n4_p5/missing_indv
+```
+
 ---
 
 ## Problemas conocidos 
