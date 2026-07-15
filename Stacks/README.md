@@ -208,8 +208,8 @@ populations -P ./stacks/RAllinOne_m5M2n4 --popmap ./barcodes/PopMap_aLL_m5M2n4.t
 **Notas:**
 - `-r 0.8`: el locus debe estar presente en el 80% de los individuos por población (filtro r80)
 - `-p 7`: número de poblaciones en las que un locus debe estar presente para conservarse en el análisis.
-- `--min-maf 0.05`: filtro de frecuencia alélica menor mínima*
-* *Por SNP, se calcula la frencuencia del alelo menos común en todo el conjunto muestreado, el valor de 0.05 nos dice que cualquier alelo menor tenga una frencuencia menor a 5% se descarta. Este umbral es estándar.*
+- `--min-maf 0.05`: filtro de frecuencia alélica menor mínima
+   *Por SNP, se calcula la frencuencia del alelo menos común en todo el conjunto muestreado, el valor de 0.05 nos dice que cualquier alelo menor tenga una frencuencia menor a 5% se descarta. Este umbral es estándar.*
   
 
 
