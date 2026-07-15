@@ -179,6 +179,8 @@ Para esto, se generó un nuevo archivo Popmap incluyendo a todos los individuos;
 nohup denovo_map.pl --samples ./demultiplexed --popmap ./barcodes/PopMap_sinFiltros.tsv -o ./stacks/RAllinOne -m 5 -M 2 -n 4 -T 10 &> denovo_all_log &
 ```
 
+<img src="imagenes/RAllinOne_m5M2n4_files.png" width="600">
+
 
 
 **Consideraciones**
