@@ -14,7 +14,7 @@ Stacks pipeline (Catchen et al., 2013)
 
 ---
 
-## ¿Cómo entro al servidor?
+## ¿Cómo acceder al servidor?
 
 Server del CIBNOR
 1. Abrir la aplicación de Hillstone secure connect para acceder con VPN.
