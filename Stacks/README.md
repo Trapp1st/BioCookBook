@@ -144,6 +144,10 @@ Lecturas Retenidas: Pool2 + Pool3
 
 <img src="imagenes/ecdf_reads_processRadtagsTotal.png" width="500">
 
+Esta gráfica es una curva de distribución acumulada de los reads retenidos por individuo post-process_radtags. Se observa que ~33 de 96 individuos obtuvieron menos de 1 millón de lecturas retenidas. Aquellas con pocos reads, tienden aa presentar missing data alto. Esto permite considerar ya sea bajar el umbral (e. g. a 500K, 750K, 900K reads) para retener más individuos, evaluando el trade-off en profundidad con relación al tamaño de muestra.
+
+
+
 
 ---
 
