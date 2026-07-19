@@ -3,6 +3,13 @@
 
 Este es un pipeline para el procesamiento de datos ddRADseq de *Octopus mimus*, desde las lecturas crudas hasta las estadísticas poblacionales, usando Stacks. 
 
+| Muestra | Reads retenidos | Umbral |
+|---------|----------------:|:------:|
+| IA5     | 22,234,744      | ≥ 1M   |
+| LI20    | 17,546,954      | ≥ 1M   |
+| EP1     | 5,174,862       | ≥ 1M   |
+| LO5     | 86,851          | < 1M   |
+
 ## Resumen del pipeline
 
 1. **process_radtags**: demultiplexa y limpia las lecturas crudas
