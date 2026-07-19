@@ -48,15 +48,22 @@ Debe ser un archivo sin extensión o de texto o separado por tabulaciones.
 
 **Notas a considerar**
 
-☙ — Los barcodes e indexes que se utilizan durante la library prep provienen del manual de ddRADseq de Peterson *et al.* (2012). En el Laboratorio de Molecular y Genética del Cibnor estos NO se modificaron, se utilizan siempre los originales. 
+— Los barcodes e indexes que se utilizan durante la library prep provienen del manual de ddRADseq de Peterson *et al.* (2012). En el Laboratorio de Molecular y Genética del Cibnor estos NO se modificaron, se utilizan siempre los originales. 
 
 En mi caso, para los pools 2 y 3 (individuos de Ecuador y Perú), utilicé los indexes 2 (CGATGT) y 3 (TTAGGC).
 
 <img src="imagenes/PCRindex_primers.png" width="400">
 
-☙ — Se tiene que checar que todas las carpetas que se ocupan como datos input deben estar localizadas en el mismo escalón o rama de árbol de directorios.
+— Se tiene que checar que todas las carpetas que se ocupan como datos input deben estar localizadas en el mismo escalón o rama de árbol de directorios.
 
 <img src="imagenes/InputDataLocation.png" width="500">
+
+**Consideraciones: corrección de los nombres de los archivos**
+
+Los nombres de los archivos puede ser que no sean los adecuados para que Stacks los ejecute. Los archivos crudos deben tener la extensión de **.fastq.gz** y NO .fq.gz (como se muestra en la siguiente imagen).
+
+<img src="imagenes/ExtensionFastq.png" width="600">
+
 
 ## 1. process_radtags
 
@@ -113,11 +120,6 @@ more process_log
 
 <img src="imagenes/moreProcess_radtags_log.png" width="600">
 
-**Consideraciones (OJO)**
-
-Los nombres de los archivos puede ser que no sean los adecuados para que Stacks los ejecute. Los archivos crudos deben tener la extensión de .fastq.gz y NO .fq.gz (como se muestra en la siguiente imagen).
-
-<img src="imagenes/ExtensionFastq.png" width="600">
 
 **Process_radtags output**
 
@@ -128,6 +130,11 @@ Al finalizar el run, se obtuvieron más de 99M de lecturas para cada pool. El ti
 Una vez concluido el *process_radtags*, se obtuvieron los números siguientes:
 
 <img src="imagenes/process_radtags_finished.png" width="500">
+
+Lecturas Retenidas: Pool2 + Pool3
+
+<img src="imagenes/ecdf_reads_processRadtagsTotal.png" width="500">
+
 
 ---
 
