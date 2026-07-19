@@ -62,6 +62,15 @@ En mi caso, para los pools 2 y 3 (individuos de Ecuador y Perú), utilicé los i
 
 Los nombres de los archivos puede ser que no sean los adecuados para que Stacks los ejecute. Los archivos crudos deben tener la extensión de **.fastq.gz** y NO .fq.gz (como se muestra en la siguiente imagen).
 
+
+Ya que el parámetro de *rename* no está instalado en el servidor, se puede utilizar el loop *for* que no depende de paqueterías adicionales. Esto con la finalidad de renombrar extensiones de los archivos.
+```bash
+cd /Datos/smunguia/raw_pools
+```
+```bash
+for f in *.fq.gz; do mv "$f" "${f%.fq.gz}.fastq.gz"; done
+```
+
 <img src="imagenes/ExtensionFastq.png" width="600">
 
 
