@@ -195,7 +195,7 @@ Gráfico de barras: reads retenidos por individuo.
 Ensambla los loci de novo (sin genoma de referencia) y construye el 
 catálogo compartido entre individuos.
 
-Tres análisis exploratorios = tres cortes de filtrado de individuos, ya que el número de lecturas entre las 96 muestras fue heterogéneo. Los cortes fueron para 1) retener aquellos individuos que presentaron igual o mayor a un millón de lecturas (1M), 2) retener aquellos con igual o mayor a 750 millones de lecturas (750K) y 3) igual o mayor a 500 millones (500K). *EN STANDBY*
+Tres análisis exploratorios = tres cortes de filtrado de individuos, ya que el número de lecturas entre las 96 muestras fue heterogéneo. Los cortes fueron: 1) individuos con igual o mayor a un millón de lecturas (1M), 2) 750 millones de lecturas (750K) y 3) 500 millones (500K). *EN STANDBY*
 
 **1M READS**
 ```bash
@@ -220,22 +220,6 @@ nohup denovo_map.pl --samples ./demultiplexed --popmap ./barcodes/popmap_500k.tx
 **Notas**
 
 Para evitar que los análisis/cortes compitan por recursos de memoria, se debe correr una por una. Correr *denovo.map* tardó en mi caso aproximadamente >9 horas x corrida, esto depende en parte del número de muchos factores, como el número de reads por individuo, la parametrización que se utilice, el número de threads. Para los análisis de 750K y 1M, utilicé 20 threads porque ningún otro usuario del servidor estaba utilizándolo. Importante revisar antes de enviar cada run.
-
-**RUNS ACTUALES**
-
-Parámetros explorados: `-m 5 / M=2,3,4 / n=M+2 (default)`
-
-**Output**
-
-EJEMPLO. Se generaron los archivos resultantes del run de 1M reads (/Datos/smunguia/stacks/R1M):
-
-<img src="imagenes/Output_1Mreads_archivos.png" width="600">
-
-Revisé el archivo *population.log*, el cual compila diferentes estadísticas, como el número total de loci retenidos, el número de sitios variantes; y algunas estadísticas poblacionales por localidad (e.g. diversidad nucleotídica, sitios polimórficos, alelos privados, etc.).
-
-<img src="imagenes/PopLOG_Locality_R1M.png" width="600">
-
-Asimismo, para las otras dos cortes de 500K y 750K reads, se generaron los archivos output correspondientes (no se muestran en este readme).
 
 ---
 
@@ -280,11 +264,32 @@ Un mapa geográfico de las localidades (Pliego-Cárdenas et al., 2021).
 
 <img src="imagenes/mapaGeo_Loc.png" width="300">
 
+---
 
+**RUNS ACTUALES**
+
+Parámetros explorados: `-m 5 / M=2,3,4 / n=M+2 (default)`
+Número de lecturas: `≥900K reads`
+Popmap file: `popmap_1M_POPMODULE.txt` con base en el output de *Process_radtags_output* (ver archivo excel *DeNovo_Pool2-3"*.
+
+
+```bash
+nohup denovo_map.pl --samples ./demultiplexed --popmap ./barcodes/popmap_1M_POPMODULE.txt -o ./stacks/R1M_m5M2n4 -m 5 -M 2 -n 4 -T 20 &> denovo_1M_m5M2n4_log &
+```
+
+```bash
+nohup denovo_map.pl --samples ./demultiplexed --popmap ./barcodes/popmap_1M_POPMODULE.txt -o ./stacks/R1M_m5M3n5 -m 5 -M 3 -n 5 -T 20 &> denovo_1M_m5M3n5_log &
+```
+
+```bash
+nohup denovo_map.pl --samples ./demultiplexed --popmap ./barcodes/popmap_1M_POPMODULE.txt -o ./stacks/R1M_m5M4n6 -m 5 -M 4 -n 6 -T 20 &> denovo_1M_m5M4n6_log &
+```
+
+---
 
 **Consideraciones**
 
-Posteriormente, cuando obtenga las secuencias del total de pools para *O. mimus* y con el objetivo de optimizar el ensamblaje de novo, evaluaré sistemáticamente diferentes combinaciones de parámetro usando RADstackshelpR (DeRaad, 2021; https://github.com/DevonDeRaad/RADstackshelpR). Por ahora me quedo con la parametrización estándar.
+Posteriormente, cuando obtenga las secuencias del total de pools para *O. mimus* y con el objetivo de optimizar el ensamblaje de novo, evaluaré sistemáticamente diferentes combinaciones de parámetro usando RADstackshelpR (DeRaad, 2021; https://github.com/DevonDeRaad/RADstackshelpR). 
 
 Es importante mencionar que los valores de **-m**, **-M** y **-n**, son modificables respecto a los datos obtenidos de la secuenciacion y su procesamiento con el pipeline de stacks. Por eso es que para diferentes especies, estos números son distintos:
 
