@@ -182,25 +182,6 @@ nohup denovo_map.pl --samples ./demultiplexed --popmap ./barcodes/popmap_1M_POPM
 - `-M 2`: número máximo de mismatches permitidos entre stacks de un mismo individuo
 - `-n 4`: número máximo de mismatches permitidos entre individuos al construir el catálogo
 
-**Notas**
-
-Para evitar que los análisis/cortes compitan por recursos de memoria, se debe correr una por una. Correr *denovo.map* tardó en mi caso aproximadamente >9 horas x corrida, esto depende en parte del número de muchos factores, como el número de reads por individuo, la parametrización que se utilice, el número de threads. Para los análisis de 750K y 1M, utilicé 20 threads porque ningún otro usuario del servidor estaba utilizándolo. Importante revisar antes de enviar cada run.
-
----
-
-**Segunda aproximación: correr *denovo_map.pl* sin filtros de número de lecturas y en el módulo de *populations* ir depurando la base de datos**
-
-Para esto, se generó un nuevo archivo Popmap incluyendo a todos los individuos; los valores de la parametrización no se modificaron (-m, -M, -n). Se ejecutó el siguiente comando:
-
-```bash
-nohup denovo_map.pl --samples ./demultiplexed --popmap ./barcodes/PopMap_sinFiltros.tsv -o ./stacks/RAllinOne -m 5 -M 2 -n 4 -T 10 &> denovo_all_log &
-```
-
-<img src="imagenes/RAllinOne_m5M2n4_files.png" width="600">
-
-**Output de denovo_all_log**
-
-Al finalizar la corrida, se generaron  archivos *populations.log* pero estos son sólo para revisar en una primera instancia los datos. No son las estadísticas finales. Esas se obtienen con el siguiente módulo de *populations*.
 
 En este paso importa observar la tabla de estadísticas de loci por individuo. Permite conocer el número total de loci ensamblados, la cobertura (x), el número de lecturas y el porcentaje de retención por individuo.
 
