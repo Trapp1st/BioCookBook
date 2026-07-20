@@ -8,7 +8,7 @@ Este es un pipeline para el procesamiento de datos ddRADseq de *Octopus mimus*, 
 2. **denovo_map.pl**: ensambla de novo y genera compendios de loci
 3. **populations**: estadísticas poblacionales y exportación de datos
 
-<img src="imagenes/Stax_pipeline.png" width="700">
+<img src="../Stacks/imagenes/Stax_pipeline.png" width="700">
 Stacks pipeline (Catchen et al., 2013)
 
 ---
