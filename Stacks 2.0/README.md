@@ -97,7 +97,13 @@ Se obtuvo >99M de lecturas por pool. El tiempo de computo fue de aproximadamente
 
 Una vez concluido el *process_radtags*, se obtuvieron los números siguientes:
 
-<img src="../Stacks/imagenes/process_radtags_finished.png" width="500">
+| Categoría                     | Lecturas    | Porcentaje |
+|-------------------------------|-------------|------------|
+| Total de secuencias           | 398,933,454 | —          |
+| Descartadas: barcode not found| 1,347,854   | 0.3%       |
+| Descartadas: low quality read | 14,357,013  | 3.6%       |
+| Descartadas: RAD cutsite not found | 2,322,453 | 0.6%    |
+| Lecturas retenidas            | 380,906,134 | 95.5%      |
 
 Lecturas Retenidas: Pool2 + Pool3
 
