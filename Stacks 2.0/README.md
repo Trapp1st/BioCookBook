@@ -4,8 +4,6 @@
 2. **denovo_map.pl**: ensambla de novo y genera compendios de loci
 3. **populations**: estadísticas poblacionales y exportación de datos
 
-<img src="../Stacks/imagenes/Stax_pipeline.png" width="700">
-
 ---
 
 ## Server del CIBNOR
@@ -91,7 +89,9 @@ more process_log
 
 **Process_radtags output**
 
-Se obtuvo >99M de lecturas por pool. El tiempo de computo fue de aproximadamente 1 hora x pool. A continuación se muestran los archivos demultiplexados del pool 3:
+Se obtuvo >99M de lecturas por pool. El tiempo de computo fue de aproximadamente 1 hora x pool. 
+
+Archivos demultiplexados del pool 3:
 
 <img src="../Stacks/imagenes/demultiplexed_pool3.png" width="600">
 
@@ -109,7 +109,7 @@ Lecturas Retenidas: Pool2 + Pool3
 
 <img src="../Stacks/imagenes/ecdf_reads_processRadtagsTotal.png" width="500">
 
-Esta gráfica es una curva de distribución acumulada de los reads retenidos por individuo post-process_radtags. Se observa que ~33 de 96 individuos obtuvieron menos de 1 millón de lecturas retenidas. Aquellas con pocos reads, tienden aa presentar missing data alto. Esto permite considerar ya sea bajar el umbral (e. g. a 500K, 750K, 900K reads) para retener más individuos, evaluando el trade-off en profundidad con relación al tamaño de muestra.
+*Curva de distribución acumulada de los reads retenidos por individuo post-process_radtags.* ~33 de 96 individuos obtuvieron menos de 1 millón de lecturas retenidas. Aquellas con pocos reads, tienden aa presentar missing data alto. Esto permite considerar ya sea bajar el umbral de corte del número de lecturas (e. g. a 500K, 750K, 900K reads) para retener más individuos, evaluando el trade-off en profundidad con relación al tamaño de muestra.
 
 <img src="../Stacks/imagenes/barras_por_muestra.png" width="1000">
 Gráfico de barras: reads retenidos por individuo.
