@@ -22,6 +22,7 @@ Datos `(/Datos/user/raw_pools)`
 
 **BARCODEFILE:**
 La estructura es `BARCODE` | `INDEX` | `SAMPLE_NAME`
+
 **POPMAP**
 `INDIVIDUO` | `CLAVE DE LOCALIDAD`
 *Sin títulos de columnas
