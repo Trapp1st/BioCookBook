@@ -163,7 +163,7 @@ Se excluyeron de análisis posteriores y se construyó el Popmap con los 66 indi
 Ensambla los loci de novo (sin genoma de referencia) y construye el 
 catálogo compartido entre individuos.
 
-Tres análisis exploratorios = tres cortes de filtrado de individuos, ya que el número de lecturas entre las 96 muestras fue heterogéneo. Los cortes fueron: 1) individuos con igual o mayor a un millón de lecturas (1M), 2) 750 millones de lecturas (750K) y 3) 500 millones (500K). *EN STANDBY*
+Parámetros: `m=5`, `M=2,3,4` `n=M+2 (default)`
 
 **1M READS**
 ```bash
