@@ -1,77 +1,42 @@
 # Pipeline bioinformático con Stacks para *Octopus mimus*
 
-Este es un pipeline para el procesamiento de datos ddRADseq de *Octopus mimus*, desde las lecturas crudas hasta las estadísticas poblacionales, usando Stacks. 
-
-## Resumen del pipeline
-
 1. **process_radtags**: demultiplexa y limpia las lecturas crudas
 2. **denovo_map.pl**: ensambla de novo y genera compendios de loci
 3. **populations**: estadísticas poblacionales y exportación de datos
 
 <img src="../Stacks/imagenes/Stax_pipeline.png" width="700">
-Stacks pipeline (Catchen et al., 2013)
 
 ---
 
-## ¿Cómo acceder al servidor?
+## Server del CIBNOR
 
-Server del CIBNOR
-1. Abrir la aplicación de Hillstone secure connect para acceder con VPN.
-
-<img src="imagenes/vpn_connect.png" width="200">
-
-2. Conectarse al servidor a través de Putty en el puerto 22.
-
-Tipo de conexión: ssh
+Conexión ssh, puerto 22
 
 ```bash
 200.23.162.240
 ```
 
-<img src="imagenes/Server_connect.png" width="300">
-
 ## Almacenamiento de las lecturas crudas
 
-Dentro del servidor (CIBNOR) las lecturas crudas se deben almacenar en la carpeta de Datos, entonces tanto el raw_data (cada pool) y el barcodefile, así como el output con las lecturas demultiplexadas y limpias, se almacenan en Datos (/Datos/user/raw_pools).
-
-<img src="imagenes/raw_pools.png" width="400">
+Datos (/Datos/user/raw_pools).
 
 ## Formatos de los archivos: barcodes & popmap
 
 **BARCODEFILE:**
-La estructura del barcodefile es **BARCODE** | **INDEX** | **SAMPLE_NAME**
-
-Debe ser un archivo sin extensión o de texto o separado por tabulaciones.
-
-<img src="imagenes/barcodefile_format.png" width="500">
-
-**Notas a considerar**
-
-— Los barcodes e indexes que se utilizan durante la library prep provienen del manual de ddRADseq de Peterson *et al.* (2012). En el Laboratorio de Molecular y Genética del Cibnor estos NO se modificaron, se utilizan siempre los originales. 
-
-En mi caso, para los pools 2 y 3 (individuos de Ecuador y Perú), utilicé los indexes 2 (CGATGT) y 3 (TTAGGC).
-
-<img src="imagenes/PCRindex_primers.png" width="400">
-
-— Se tiene que checar que todas las carpetas que se ocupan como datos input deben estar localizadas en el mismo escalón o rama de árbol de directorios.
-
-<img src="imagenes/InputDataLocation.png" width="500">
-
-**Consideraciones: corrección de los nombres de los archivos**
-
-Los nombres de los archivos puede ser que no sean los adecuados para que Stacks los ejecute. Los archivos crudos deben tener la extensión de **.fastq.gz** y NO .fq.gz (como se muestra en la siguiente imagen).
+La estructura del barcodefile es `BARCODE` | `INDEX` | `SAMPLE_NAME`
 
 
-Ya que el parámetro de *rename* no está instalado en el servidor, se puede utilizar el loop *for* que no depende de paqueterías adicionales. Esto con la finalidad de renombrar extensiones de los archivos.
+**Nombres de los archivos**
+
+Los archivos crudos deben tener la extensión de `.fastq.gz` y **NO** `.fq.gz`.
+
+Para cambiar los nombres de las extensiones:
 ```bash
 cd /Datos/smunguia/raw_pools
 ```
 ```bash
 for f in *.fq.gz; do mv "$f" "${f%.fq.gz}.fastq.gz"; done
 ```
-
-<img src="imagenes/ExtensionFastq.png" width="600">
-
 
 ## 1. process_radtags
 
