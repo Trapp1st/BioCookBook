@@ -391,6 +391,21 @@ sort -k6 -n -r missing_site_limpio.lmiss | head -20
 
 El nuevo dataset (n = 34, 4 poblaciones, correspondiente al pool 3) resultó estar más "limpio". BS2 fue el individuo que rebasó los 30% de MD. Sin embargo, lo consideré ya que está justo en el límite del umbral aplicado. El resto de individuos se mantuvieron por debajo de 30%. Respecto al MD x locus, está por debajo del 15%. Se considera aceptable.
 
+Visualización completa de la distribución de los missing data
+
+```bash
+awk 'NR>1 {print $6}' missing_site_limpio.lmiss | sort -n | uniq -c
+```
+
+Visualización directa de loci retenidos por cada umbral
+
+```bash
+for t in 0.5 0.7 0.8 0.9; do
+  echo -n "max-missing $t: "
+  awk -v t=$t 'NR>1 && (1-$6) >= t' missing_site_limpio.lmiss | wc -l
+done
+```
+
 ---
 
 
