@@ -117,7 +117,7 @@ Gráfico de barras: reads retenidos por individuo.
 
 **Muestras descartadas por baja representación**
 
-## Muestras excluidas por umbral (<1M reads retenidos)
+## Muestras excluidas por umbral (<900,000 reads retenidos)
 
 | Barcode        | Muestra | Reads retenidos |
 |----------------|---------|----------------:|
@@ -153,6 +153,8 @@ Gráfico de barras: reads retenidos por individuo.
 | TTACC-TTAGGC   | LO10    |         365,500 |
 
 **Total excluidas:** 30 muestras
+
+Se excluyeron de análisis posteriores y se construyó el Popmap con los 66 individuos restantes (`popmap_1M_POPMODULE.txt`).
 
 ---
 
