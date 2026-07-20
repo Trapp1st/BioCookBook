@@ -93,19 +93,19 @@ more process_log
 
 Se obtuvo >99M de lecturas por pool. El tiempo de computo fue de aproximadamente 1 hora x pool. A continuación se muestran los archivos demultiplexados del pool 3:
 
-<img src="imagenes/demultiplexed_pool3.png" width="600">
+<img src="../Stacks/imagenes/demultiplexed_pool3.png" width="600">
 
 Una vez concluido el *process_radtags*, se obtuvieron los números siguientes:
 
-<img src="imagenes/process_radtags_finished.png" width="500">
+<img src="../Stacks/imagenes/process_radtags_finished.png" width="500">
 
 Lecturas Retenidas: Pool2 + Pool3
 
-<img src="imagenes/ecdf_reads_processRadtagsTotal.png" width="500">
+<img src="../Stacks/imagenes/ecdf_reads_processRadtagsTotal.png" width="500">
 
 Esta gráfica es una curva de distribución acumulada de los reads retenidos por individuo post-process_radtags. Se observa que ~33 de 96 individuos obtuvieron menos de 1 millón de lecturas retenidas. Aquellas con pocos reads, tienden aa presentar missing data alto. Esto permite considerar ya sea bajar el umbral (e. g. a 500K, 750K, 900K reads) para retener más individuos, evaluando el trade-off en profundidad con relación al tamaño de muestra.
 
-<img src="imagenes/barras_por_muestra.png" width="1000">
+<img src="../Stacks/imagenes/barras_por_muestra.png" width="1000">
 Gráfico de barras: reads retenidos por individuo.
 
 **Muestras descartadas por baja representación**
