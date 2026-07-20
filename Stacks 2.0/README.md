@@ -18,13 +18,15 @@ Conexión ssh, puerto 22
 
 ## Almacenamiento de las lecturas crudas
 
-Datos (/Datos/user/raw_pools).
+Datos `(/Datos/user/raw_pools)`
 
 ## Formatos de los archivos: barcodes & popmap
 
 **BARCODEFILE:**
-La estructura del barcodefile es `BARCODE` | `INDEX` | `SAMPLE_NAME`
-
+La estructura es `BARCODE` | `INDEX` | `SAMPLE_NAME`
+**POPMAP**
+`INDIVIDUO` | `CLAVE DE LOCALIDAD`
+*Sin títulos de columnas
 
 **Nombres de los archivos**
 
@@ -40,11 +42,9 @@ for f in *.fq.gz; do mv "$f" "${f%.fq.gz}.fastq.gz"; done
 
 ## 1. process_radtags
 
-Demultiplexa las lecturas por individuo a partir de los archivos crudos 
-del secuenciador Novogene y elimina lecturas de baja calidad.
+Demultiplexa las lecturas por individuo y elimina lecturas de baja calidad.
 
-Primeramente se llama al ambiente de stacks.
-
+Llamado del ambiente:
 ```bash
 conda activate stacks
 ```
@@ -56,11 +56,11 @@ nohup process_radtags -P -p ./raw_pools -b ./barcodes/barcodes_Pool2y3.txt -o ./
 
 **Parámetros:**
 - `-P`: datos paired-end (lecturas R1 + R2 emparejadas)
-- `-p -/raw_pools`: la ruta hacia la carpeta donde están mis lecturas crudas del pool
-- `-b barcodes_Pool2y3.txt`: ruta hacia la carpeta de archivo de barcodes
+- `-p -/raw_pools`:  ruta hacia las lecturas crudas del pool
+- `-b barcodes_Pool2y3.txt`: ruta hacia el archivo de barcodes
 - `-o ./demultiplexed`: carpeta de salida para los archivos FastQ separados
-- `-c`: clean: remueve aquellas lecturas con bases indeterminadas (N)
-- `-q`: filtro  de calidad (Phred)
+- `-c`: clean: remueve lecturas con bases indeterminadas (N)
+- `-q`: filtro de calidad (Phred)
 - `-r`: rescata barcodes/sitios de corte con errores menores
 - `-s 25`: umbral de Phred para el parámetro de -q
 - `--inline_index`: índice dentro de la lectura, no como archivo aparte
@@ -68,8 +68,8 @@ nohup process_radtags -P -p ./raw_pools -b ./barcodes/barcodes_Pool2y3.txt -o ./
 - `--renz_2 mspI`: enzima corte frecuente (CCGG)
 
 **Notas**
-- `nohup`: permite dejar el análisis en el background. Si uno se va a tomar un café y cierra la PC, el server sigue computando el run.
-- `process_log`: genera las notificaciones del análisis.
+- `nohup`: permite dejar el análisis en el background
+- `process_log`: genera las notificaciones del análisis
 
 Para checar los procesos actuales del servidor que están corriendo:
 
@@ -83,20 +83,15 @@ o
 htop
 ```
 
-<img src="imagenes/topcommand.png" width="600">
-
-Para observar si *process_radtags* se congeló y no computó, o si simplemente se quiere saber el pasó en el que va o, en su caso, el desenlace de la corrida, entonces se utiliza el comando:
+Para observar resultados o la etapa del análisis se utiliza el comando:
 
 ```bash
 more process_log
 ```
 
-<img src="imagenes/moreProcess_radtags_log.png" width="600">
-
-
 **Process_radtags output**
 
-Al finalizar el run, se obtuvieron más de 99M de lecturas para cada pool. El tiempo de computo fue de aproximadamente 1 hora x pool. A continuación se muestran los archivos demultiplexados del pool 3:
+Se obtuvo >99M de lecturas por pool. El tiempo de computo fue de aproximadamente 1 hora x pool. A continuación se muestran los archivos demultiplexados del pool 3:
 
 <img src="imagenes/demultiplexed_pool3.png" width="600">
 
