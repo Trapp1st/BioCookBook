@@ -201,7 +201,7 @@ El número de poblaciones se modificón con relación al proceso de depuración 
 
 <img src="../Stacks/imagenes/Localidades_popmaps.png" width="800">
 
-### 3. Populations inicial
+### 3.1 Populations inicial
 
 - Localidades: 6
 - `-p 4`
@@ -249,7 +249,7 @@ populations -P ./stacks/R1M_m5M4n6 --popmap ./barcodes/Popmap_1M_m5M3n5_postdeno
 *Se corrió un VCF por individuo y por locus. EP obtuvo más de >30% de missing data, esa localidad se eliminó.*
 
 
-### 3. Populations intermedio
+### 3.2 Populations intermedio
 
 - Localidades: 5
 - `-p 3`
@@ -283,7 +283,7 @@ populations -P ./stacks/R1M_m5M2n4 --popmap ./barcodes/Popmap_1M_m5M3n5_MD.tsv -
 **MD por individuo**
 
 ```bash
-vcftools --vcf populations.snps.vcf --missing-indv --out miss_1M_m5M3n5_p4
+vcftools --vcf populations.snps.vcf --missing-indv --out miss_1M_m5M2n4_p3
 ```
 
 **MD por locus**
@@ -315,7 +315,23 @@ Debido a que el missing data por locus fue alto para algunos individuos (*y que 
 
 Se seleccionó el umbral de 0.8, permitiendo el 20% de missing data. El número de SNPs final rondó entre los ~20K en todas las corridas.
 
-Al verificar el porcentaje de missing data por individuo y la distribución por por locus, efectivamente disminuyó para ambos análisis:
+Visualización directa de loci retenidos por cada umbral
+
+```bash
+for t in 0.5 0.7 0.8 0.9; do
+  echo -n "max-missing $t: "
+  awk -v t=$t 'NR>1 && (1-$6) >= t' missing_site_limpio.lmiss | wc -l
+done
+```
+
+Al verificar el porcentaje de missing data por individuo y la distribución por por locus, efectivamente disminuyó para ambos análisis.
+
+
+*Visualización completa de la distribución de los missing data*
+
+```bash
+awk 'NR>1 {print $6}' missing_site_limpio.lmiss | sort -n | uniq -c
+```
 
 ### Missing data por individuo
 
@@ -348,22 +364,12 @@ Al verificar el porcentaje de missing data por individuo y la distribución por 
 | 17%          | 3596   | 3583   | 3618   |
 
 
+Al finalizar, se corrió un último *populations* con los 29 individuos restantes (- p 3) para obtener los estadísticos poblacionales finales (*ver 3.3 Populations final*).
 
 
 
 
 
-Visualización completa de la distribución de los missing data
 
-```bash
-awk 'NR>1 {print $6}' missing_site_limpio.lmiss | sort -n | uniq -c
-```
 
-Visualización directa de loci retenidos por cada umbral
 
-```bash
-for t in 0.5 0.7 0.8 0.9; do
-  echo -n "max-missing $t: "
-  awk -v t=$t 'NR>1 && (1-$6) >= t' missing_site_limpio.lmiss | wc -l
-done
-```
