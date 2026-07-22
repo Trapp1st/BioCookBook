@@ -195,29 +195,29 @@ nohup denovo_map.pl --samples ./demultiplexed --popmap ./barcodes/popmap_1M_POPM
 
 ## 3. populations
 
-Genera estadísticas poblacionales, filtra loci según parámetros de 
-representación, y exporta formatos de salida (VCF, structure, etc.).
+Genera estadísticas poblacionales, filtra loci y exporta formatos de salida (VCF, structure, etc.).
 
-<img src="../Stacks/imagenes/PopulationsModule_initiate.png" width="500">
+El número de poblaciones se fue modificando conforme se depuraban los individuos:
 
-Generé dos runs con diferentes valores de -p. El primero fue una -p igual a 7. Este es un número muy exigente porque los loci deben estar presentes en las 7 poblaciones (EP, LI, ESR, AN, IA, PLBLO, BS). El primer comando utilizado fue:
+<img src="../Stacks/imagenes/Localidades_popmaps.png" width="500">
+
+Populations inicial:
+- Localidades: 6
+- `-p 4`
+
 
 ```bash
-populations -P ./stacks/RAllinOne_m5M2n4 --popmap ./barcodes/PopMap_aLL_m5M2n4.tsv -O ./populations/All_m5M2n4/ -p 7 -r 0.80 -t 5 --min-maf 0.05 --write-single-snp --genepop --vcf --fasta-loci --fasta-samples
+populations -P ./stacks/R1M_m5M3n5 --popmap ./barcodes/Popmap_1M_m5M3n5_postdenovo.tsv -O ./populations/1M_m5M3n5/ -p 4 -r 0.80 -t 5 --min-maf 0.05 --write-single-snp --genepop --vcf --fasta-loci --fasta-samples
 ```
 
 **Parámetros:**
 - `-r 0.8`: el locus debe estar presente en el 80% de los individuos por población (filtro r80)
-- `-p 7`: número de poblaciones en las que un locus debe estar presente para conservarse en el análisis.
+- `-p 4`: número de poblaciones en las que un locus debe estar presente para conservarse en el análisis.
 - `--min-maf 0.05`: filtro de frecuencia alélica menor mínima
 
-  *Por SNP, se calcula la frencuencia del alelo menos común en todo el conjunto muestreado, el valor de 0.05 nos dice que cualquier alelo menor tenga una frencuencia menor a 5% se descarta. Este umbral es estándar.*
+  *MinMAF: Por SNP se calcula la frencuencia del alelo menos común en todo el conjunto muestreado, el valor de 0.05 nos dice que cualquier alelo menor tenga una frencuencia menor a 5% se descarta. Este umbral es estándar.*
 
-Como  primer output, se obtuvo un número bajo de SNPs por población:
 
-<img src="imagenes/Pop_statistics.png" width="600">
-
-Reduje el número de -p a 5
   
 ```bash
 populations -P ./stacks/RAllinOne_m5M2n4 --popmap ./barcodes/PopMap_aLL_m5M2n4.tsv -O ./populations/All_m5M2n4/ -p 5 -r 0.80 -t 5 --min-maf 0.05 --write-single-snp --genepop --vcf --fasta-loci --fasta-samples
@@ -225,7 +225,7 @@ populations -P ./stacks/RAllinOne_m5M2n4 --popmap ./barcodes/PopMap_aLL_m5M2n4.t
 
 De un número bajo de SNPs (-p 7) aumentó a más de 2000 SNPs (-p 5). Sin embargo, ESR (una de las localidades fusionada con organismos de Santa Rosa y Salinas) me generó únicamente 91 SNPs.
 
-<img src="imagenes/Pop_statistics.png" width="500">
+<img src="../Stacks/imagenes/Pop_statistics.png" width="500">
 
 <img src="imagenes/Metrics_pop_p5.png" width="300">
 
