@@ -274,6 +274,29 @@ populations -P ./stacks/R1M_m5M2n4 --popmap ./barcodes/Popmap_1M_m5M3n5_MD.tsv -
 | Loci retained  | 52154  | 52251  | 51948  |
 | Variant sites  | 38776  | 38605  | 38776  |
 
+
+### 3.3 Populations final
+
+- Localidades: 5
+- `-p 3`
+- - Popmap: `Popmap_p3_sinE11.tsv`. Se utilizó el mismo archivo para los tres análisis ya que se eliminaron los mismos individuos.
+ 
+ ```bash
+populations -P ./stacks/R1M_m5M3n5 --popmap ./barcodes/Popmap_p3_sinE11.tsv -O ./populations/1M_m5M3n5/p3_sinE11 -p 3 -r 0.80 -R 0.80 -t 5 --min-maf 0.05 --write-single-snp --genepop --vcf --fasta-loci --fasta-samples
+```
+
+```bash
+populations -P ./stacks/R1M_m5M2n4 --popmap ./barcodes/Popmap_p3_sinE11.tsv -O ./populations/1M_m5M2n4/p3_sinE11 -p 3 -r 0.80 -R 0.80 -t 5 --min-maf 0.05 --write-single-snp --genepop --vcf --fasta-loci --fasta-samples
+```
+
+```bash
+populations -P ./stacks/R1M_m5M4n6 --popmap ./barcodes/Popmap_p3_sinE11.tsv -O ./populations/1M_m5M4n6/p3_sinE11 -p 3 -r 0.80 -R 0.80 -t 5 --min-maf 0.05 --write-single-snp --genepop --vcf --fasta-loci --fasta-samples
+```
+
+- `-r 0.80`: dentro de cada población, al menos 80% de sus individuos deben tener el locus
+- `-R 0.80`: a nivel genotipo/SNP, se exige 80% de cobertura por población (es equivalente al --max-missing de vcf).
+
+
 ---
 
 ## Análisis del missing data (VCFtools)
