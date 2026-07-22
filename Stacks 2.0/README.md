@@ -182,31 +182,13 @@ nohup denovo_map.pl --samples ./demultiplexed --popmap ./barcodes/popmap_1M_POPM
 - `-M 2`: número máximo de mismatches permitidos entre stacks de un mismo individuo
 - `-n 4`: número máximo de mismatches permitidos entre individuos al construir el catálogo
 
-
-
-Al finalizar el conteo, mi nuevo PopMap se construyó con 75 individuos. Dado que la localidad **Lobitos (LOB)** originalmente solamente contaba con 3 individuos, con la depuración por número de reads y otras estadísitcas, se quedo en **n = 1**. Lo mismo con **Los Órganos (LO)**, pese a que contaba con más de 5 indivduos, la depuración redujo el número a **n = 1**. En el caso de **Santa Rosa (SR)**, una localidad problemática (casos límite de no-depuración), su n fue igual a **4**. Bajo este contexto, se decidió fusionar localidades/poblaciones con base en la distancia geográfica corta entre localidades muestreadas y el número de muestras totales por localidad. Por ende, LOB y LO se fusionó con Punta Sal (PS; n = 8) y SR con Salinas (E).
-
-<img src="../Stacks/imagenes/Claves_localidades.png" width="300">
-
-A continuación se muestra una tabla con el número total de muestras recuperadas: 
-
-
-<img src="../Stacks/imagenes/Fusion_localidades.png" width="300">
-
-
-Un mapa geográfico de las localidades (Pliego-Cárdenas et al., 2021).
-
-
-<img src="../Stacks/imagenes/mapaGeo_Loc.png" width="300">
-
-
 **Notas**
 
 - Optimización del ensamblaje de novo a partir de diferetntes combinaciones de parámetros: `RADstackshelpR` (DeRaad, 2021; https://github.com/DevonDeRaad/RADstackshelpR). 
 
 - Los valores de **-m**, **-M** y **-n** son modificables respecto a los datos obtenidos. No hay valores universales:
 
-<img src="../Stacks/imagenes/Denovo_parametros_ejemplos.png" width="600">
+<img src="../Stacks/imagenes/Denovo_parametros_ejemplos.png" width="700">
 
 
 ---
@@ -216,7 +198,7 @@ Un mapa geográfico de las localidades (Pliego-Cárdenas et al., 2021).
 Genera estadísticas poblacionales, filtra loci según parámetros de 
 representación, y exporta formatos de salida (VCF, structure, etc.).
 
-<img src="imagenes/PopulationsModule_initiate.png" width="500">
+<img src="../Stacks/imagenes/PopulationsModule_initiate.png" width="500">
 
 Generé dos runs con diferentes valores de -p. El primero fue una -p igual a 7. Este es un número muy exigente porque los loci deben estar presentes en las 7 poblaciones (EP, LI, ESR, AN, IA, PLBLO, BS). El primer comando utilizado fue:
 
