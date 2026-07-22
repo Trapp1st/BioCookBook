@@ -408,6 +408,10 @@ awk 'NR>1 {print $6}' missing_site_limpio.lmiss | sort -n | uniq -c
 
 Al finalizar, se corrió un último *populations* con los 29 individuos restantes (- p 3) para obtener los estadísticos poblacionales finales (*ver 3.3 Populations final*).
 
+---
+
+## Resumen 
+
 
 
 
