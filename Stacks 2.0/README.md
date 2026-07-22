@@ -232,7 +232,6 @@ populations -P ./stacks/R1M_m5M4n6 --popmap ./barcodes/Popmap_1M_m5M3n5_postdeno
 
   *MinMAF: Por SNP se calcula la frencuencia del alelo menos común en todo el conjunto muestreado, el valor de 0.05 nos dice que cualquier alelo menor tenga una frencuencia menor a 5% se descarta. Este umbral es estándar.*
 
-**Filtrado de loci (post-denovo, -p 4)
 
 ### Filtrado de loci (post denovo, `-p 4`)
 
@@ -279,7 +278,9 @@ populations -P ./stacks/R1M_m5M2n4 --popmap ./barcodes/Popmap_1M_m5M3n5_MD.tsv -
 
 - Localidades: 5
 - `-p 3`
-- - Popmap: `Popmap_p3_sinE11.tsv`. Se utilizó el mismo archivo para los tres análisis ya que se eliminaron los mismos individuos.
+- Individuos: 29
+- Se eliminó EP y E11
+- Popmap: `Popmap_p3_sinE11.tsv`. Se utilizó el mismo archivo para los tres análisis ya que se eliminaron los mismos individuos.
  
  ```bash
 populations -P ./stacks/R1M_m5M3n5 --popmap ./barcodes/Popmap_p3_sinE11.tsv -O ./populations/1M_m5M3n5/p3_sinE11 -p 3 -r 0.80 -R 0.80 -t 5 --min-maf 0.05 --write-single-snp --genepop --vcf --fasta-loci --fasta-samples
@@ -295,6 +296,18 @@ populations -P ./stacks/R1M_m5M4n6 --popmap ./barcodes/Popmap_p3_sinE11.tsv -O .
 
 - `-r 0.80`: dentro de cada población, al menos 80% de sus individuos deben tener el locus
 - `-R 0.80`: a nivel genotipo/SNP, se exige 80% de cobertura por población (es equivalente al --max-missing de vcf).
+
+### Número de loci por corrida para 29 individuos (- p 3)
+
+| Metric         | m5M3n5  | m5M2n4  | m5M4n6  |
+|----------------|---------|---------|---------|
+| Total loci     | 751,492 | 771,462 | 733,579 |
+| Loci retained  | 31,894  | 31,735  | 31,838  |
+| Variant sites  | 22,460  | 22,153  | 22,557  |
+
+### Estadísticas poblacionales finales
+
+<img src="../Stacks/imagenes/missing_data_por_individuo.png" width="700">
 
 
 ---
