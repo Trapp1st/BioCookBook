@@ -197,14 +197,15 @@ nohup denovo_map.pl --samples ./demultiplexed --popmap ./barcodes/popmap_1M_POPM
 
 Genera estadísticas poblacionales, filtra loci y exporta formatos de salida (VCF, structure, etc.).
 
-El número de poblaciones se fue modificando conforme se depuraban los individuos:
+El número de poblaciones se modificón con relación al proceso de depuración de los individuos:
 
-<img src="../Stacks/imagenes/Localidades_popmaps.png" width="500">
+<img src="../Stacks/imagenes/Localidades_popmaps.png" width="800">
 
-Populations inicial:
+### 3. Populations inicial
+
 - Localidades: 6
 - `-p 4`
-- Popmap: `Popmap_1M_m5M3n5_postdenovo.tsv`. Se utilizó el mismo popmap para todos en los tres análisis ya que se depuraron previamente los mismos individuos.
+- Popmap: `Popmap_1M_m5M3n5_postdenovo.tsv`. Se utilizó el mismo archivo para los tres análisis ya que se eliminaron los mismos individuos.
 
 **m5M2n4**
 
@@ -233,20 +234,7 @@ populations -P ./stacks/R1M_m5M4n6 --popmap ./barcodes/Popmap_1M_m5M3n5_postdeno
 
 
   
-```bash
-populations -P ./stacks/RAllinOne_m5M2n4 --popmap ./barcodes/PopMap_aLL_m5M2n4.tsv -O ./populations/All_m5M2n4/ -p 5 -r 0.80 -t 5 --min-maf 0.05 --write-single-snp --genepop --vcf --fasta-loci --fasta-samples
-```
 
-De un número bajo de SNPs (-p 7) aumentó a más de 2000 SNPs (-p 5). Sin embargo, ESR (una de las localidades fusionada con organismos de Santa Rosa y Salinas) me generó únicamente 91 SNPs.
-
-<img src="../Stacks/imagenes/Pop_statistics.png" width="500">
-
-<img src="imagenes/Metrics_pop_p5.png" width="300">
-
-<img src="imagenes/Metrics2_pop_p5.png" width="600">
-
-
-Se revisaron superficialmente los estadísticos de diversidad sin haber analizado los missing data por individuo y locus. El FIS fue alto para ESR (posiblemente debido a un error técnico y no a una realidad biológica). AN por el contrario, mostró casi un equilibrio completo de Hardy-Weinberg, quizás sea sesgo.
 
 ---
 
