@@ -232,9 +232,19 @@ populations -P ./stacks/R1M_m5M4n6 --popmap ./barcodes/Popmap_1M_m5M3n5_postdeno
 
   *MinMAF: Por SNP se calcula la frencuencia del alelo menos común en todo el conjunto muestreado, el valor de 0.05 nos dice que cualquier alelo menor tenga una frencuencia menor a 5% se descarta. Este umbral es estándar.*
 
+**Filtrado de loci (post-denovo, -p 4)
 
+### Filtrado de loci (post denovo, `-p 4`)
+
+| Metric           | m5M2n4    | m5M3n5    | m5M4n6    |
+|------------------|-----------|-----------|-----------|
+| Loci removed     | 731596    | 711533    | 693727    |
+| Total loci       | 771462    | 751492    | 733579    |
+| Loci retained    | 39866     | 39959     | 39852     |
+| Total sites      | 5825587   | 5839689   | 5824163   |
+| Sites filtered   | 155436    | 158991    | 160145    |
+| Variant sites    | 27961     | 28239     | 28296     |
   
-
 
 ---
 
