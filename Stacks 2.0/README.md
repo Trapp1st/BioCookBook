@@ -278,19 +278,28 @@ populations -P ./stacks/R1M_m5M2n4 --popmap ./barcodes/Popmap_1M_m5M3n5_MD.tsv -
 
 ## Análisis del missing data (VCFtools)
 
+*El análisis de missing data por individuo y por locus se fue generando entre los análisis del populations.*
 
-**Por indviduo: -p 5**
+**MD por individuo**
 
 ```bash
-vcftools --vcf ./populations/All_m5M2n4_p5/populations.snps.vcf --missing-indv --out ./populations/All_m5M2n4_p5/missing_indv
+vcftools --vcf populations.snps.vcf --missing-indv --out miss_1M_m5M3n5_p4
 ```
 
-<img src="imagenes/VCF_xindiv_p5.png" width="600">
+**MD por locus**
 
-Para revisar aquellos individuos con más missing data:
+```bash
+vcftools --vcf populations.snps.vcf --missing-site --out missing_site_limpio
+```
+
+Para enlistar individuos o loci con mayor número de missing data:
 
 ```bash
 sort -k5 -n -r missing_indv.imiss | head -20
+```
+
+```bash
+sort -k6 -n -r missing_site_limpio.lmiss | head -20
 ```
 
 
