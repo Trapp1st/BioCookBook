@@ -246,9 +246,38 @@ populations -P ./stacks/R1M_m5M4n6 --popmap ./barcodes/Popmap_1M_m5M3n5_postdeno
 | Variant sites    | 27961     | 28239     | 28296     |
   
 
+*Se corrió un VCF por individuo y por locus. EP obtuvo más de >30% de missing data, esa localidad se eliminó.*
+
+
+### 3. Populations intermedio
+
+- Localidades: 5
+- `-p 3`
+- - Popmap: `Popmap_1M_m5M3n5_MD.tsv`. Se utilizó el mismo archivo para los tres análisis ya que se eliminaron los mismos individuos.
+
+```bash
+populations -P ./stacks/R1M_m5M2n4 --popmap ./barcodes/Popmap_1M_m5M3n5_MD.tsv -O ./populations/1M_m5M2n4/p3_postMissingData -p 3 -r 0.80 -t 5 --min-maf 0.05 --write-single-snp --genepop --vcf --fasta-loci --fasta-samples
+```
+
+```bash
+populations -P ./stacks/R1M_m5M3n5 --popmap ./barcodes/Popmap_1M_m5M3n5_MD.tsv -O ./populations/1M_m5M3n5/p3_postMissingData -p 3 -r 0.80 -t 5 --min-maf 0.05 --write-single-snp --genepop --vcf --fasta-loci --fasta-samples
+```
+
+```bash
+populations -P ./stacks/R1M_m5M2n4 --popmap ./barcodes/Popmap_1M_m5M3n5_MD.tsv -O ./populations/1M_m5M2n4/p3_postMissingData -p 3 -r 0.80 -t 5 --min-maf 0.05 --write-single-snp --genepop --vcf --fasta-loci --fasta-samples
+```
+
+**Loci sin localidad EP (n =30)**
+
+| Metric         | m5M3n5 | m5M2n4 | m5M4n6 |
+|----------------|--------|--------|--------|
+| Loci retained  | 52154  | 52251  | 51948  |
+| Variant sites  | 38776  | 38605  | 38776  |
+
 ---
 
-## Análisis del missing data
+## Análisis del missing data (VCFtools)
+
 
 **Por indviduo: -p 5**
 
