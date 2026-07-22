@@ -183,63 +183,30 @@ nohup denovo_map.pl --samples ./demultiplexed --popmap ./barcodes/popmap_1M_POPM
 - `-n 4`: número máximo de mismatches permitidos entre individuos al construir el catálogo
 
 
-En este paso importa observar la tabla de estadísticas de loci por individuo. Permite conocer el número total de loci ensamblados, la cobertura (x), el número de lecturas y el porcentaje de retención por individuo.
-
-
-<img src="imagenes/ecdf_reads.png" width="600">
-
-
-En mi caso, revisé valores esperados "estándar". Por ejemplo, un número alto de loci ensamblados (>10,000), una cobertura >10x, un número alto de lecturas (>1M), al menos un 80% de retención. Sin embargo, esto no fue el caso para ~21 individuos, ya que estos presentaron, en casos particulares <8 de % de retención, ~10K de reads, pocos loci ensamblados y baja cobertura. Se descartaron para generar un nuevo PopMap. En algunos casos, sí retuve ciertos individuos potenciales pese a que no todas sus estadísticas resultaron buenas. Por ejemplo, algunos individuos presentaron pocas reads (~500K), muy buena cobertura (>20x) y un número considerable de loci retenidos (~30K). 
-
-
-<img src="imagenes/DenovoAll_output.png" width="500">
-
 
 Al finalizar el conteo, mi nuevo PopMap se construyó con 75 individuos. Dado que la localidad **Lobitos (LOB)** originalmente solamente contaba con 3 individuos, con la depuración por número de reads y otras estadísitcas, se quedo en **n = 1**. Lo mismo con **Los Órganos (LO)**, pese a que contaba con más de 5 indivduos, la depuración redujo el número a **n = 1**. En el caso de **Santa Rosa (SR)**, una localidad problemática (casos límite de no-depuración), su n fue igual a **4**. Bajo este contexto, se decidió fusionar localidades/poblaciones con base en la distancia geográfica corta entre localidades muestreadas y el número de muestras totales por localidad. Por ende, LOB y LO se fusionó con Punta Sal (PS; n = 8) y SR con Salinas (E).
 
-<img src="imagenes/Claves_localidades.png" width="300">
+<img src="../Stacks/imagenes/Claves_localidades.png" width="300">
 
 A continuación se muestra una tabla con el número total de muestras recuperadas: 
 
 
-<img src="imagenes/Fusion_localidades.png" width="300">
+<img src="../Stacks/imagenes/Fusion_localidades.png" width="300">
 
 
 Un mapa geográfico de las localidades (Pliego-Cárdenas et al., 2021).
 
 
-<img src="imagenes/mapaGeo_Loc.png" width="300">
-
----
-
-**RUNS ACTUALES**
-
-Parámetros explorados: `-m 5 / M=2,3,4 / n=M+2 (default)`
-Número de lecturas: `≥900K reads`
-Popmap file: `popmap_1M_POPMODULE.txt` con base en el output de *Process_radtags_output* (ver archivo excel *DeNovo_Pool2-3"*.
+<img src="../Stacks/imagenes/mapaGeo_Loc.png" width="300">
 
 
-```bash
-nohup denovo_map.pl --samples ./demultiplexed --popmap ./barcodes/popmap_1M_POPMODULE.txt -o ./stacks/R1M_m5M2n4 -m 5 -M 2 -n 4 -T 20 &> denovo_1M_m5M2n4_log &
-```
+**Notas**
 
-```bash
-nohup denovo_map.pl --samples ./demultiplexed --popmap ./barcodes/popmap_1M_POPMODULE.txt -o ./stacks/R1M_m5M3n5 -m 5 -M 3 -n 5 -T 20 &> denovo_1M_m5M3n5_log &
-```
+- Optimización del ensamblaje de novo a partir de diferetntes combinaciones de parámetros: `RADstackshelpR` (DeRaad, 2021; https://github.com/DevonDeRaad/RADstackshelpR). 
 
-```bash
-nohup denovo_map.pl --samples ./demultiplexed --popmap ./barcodes/popmap_1M_POPMODULE.txt -o ./stacks/R1M_m5M4n6 -m 5 -M 4 -n 6 -T 20 &> denovo_1M_m5M4n6_log &
-```
+- Los valores de **-m**, **-M** y **-n** son modificables respecto a los datos obtenidos. No hay valores universales:
 
----
-
-**Consideraciones**
-
-Posteriormente, cuando obtenga las secuencias del total de pools para *O. mimus* y con el objetivo de optimizar el ensamblaje de novo, evaluaré sistemáticamente diferentes combinaciones de parámetro usando RADstackshelpR (DeRaad, 2021; https://github.com/DevonDeRaad/RADstackshelpR). 
-
-Es importante mencionar que los valores de **-m**, **-M** y **-n**, son modificables respecto a los datos obtenidos de la secuenciacion y su procesamiento con el pipeline de stacks. Por eso es que para diferentes especies, estos números son distintos:
-
-<img src="imagenes/Denovo_parametros_ejemplos.png" width="600">
+<img src="../Stacks/imagenes/Denovo_parametros_ejemplos.png" width="600">
 
 
 ---
