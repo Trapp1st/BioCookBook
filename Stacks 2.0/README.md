@@ -307,7 +307,8 @@ populations -P ./stacks/R1M_m5M4n6 --popmap ./barcodes/Popmap_p3_sinE11.tsv -O .
 
 ### Estadísticas poblacionales finales
 
-<img src="../Stacks/imagenes/missing_data_por_individuo.png" width="700">
+
+<img src="../Stacks/imagenes/populations_final_29ind.png" width="700">
 
 
 ---
