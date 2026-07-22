@@ -312,7 +312,41 @@ Debido a que el missing data por locus fue alto para algunos individuos (*y que 
 | 0.8 (≤20% missing)  | 23,212                   | 22,959                   | 23,273                   | 60%                           | 59%                           | 60%                           |
 | 0.9 (≤10% missing)  | 14,816                   | 14,610                   | 14,864                   | 38%                           | 38%                           | 38%                           |
 
-**Output de missing data por individuo**
+
+Se seleccionó el umbral de 0.8, permitiendo el 20% de missing data. El número de SNPs final rondó entre los ~20K en todas las corridas.
+
+Al verificar el porcentaje de missing data por individuo y la distribución por por locus, efectivamente disminuyó para ambos análisis:
+
+### Missing data por individuo
+
+| INDV  | m5M3n5 | m5M2n4 | m5M4n6 |
+|-------|--------|--------|--------|
+| LI24  | 16%    | 16%    | 16%    |
+| LI22  | 16%    | 16%    | 16%    |
+| LI20  | 16%    | 16%    | 16%    |
+| LI12  | 16%    | 16%    | 16%    |
+| IA1   | 16%    | 16%    | 16%    |
+| BS1   | 14%    | 14%    | 14%    |
+| PS1   | 11%    | 11%    | 11%    |
+| PS10  | 11%    | 11%    | 11%    |
+| LOB3  | 11%    | 11%    | 11%    |
+| LO9   | 11%    | 11%    | 11%    |
+| BS9   | 10%    | 10%    | 10%    |
+| AN6   | 7%     | 7%     | 7%     |
+| IA8   | 6%     | 6%     | 6%     |
+| IA22  | 5%     | 5%     | 5%     |
+
+### Númerode loci retenidos en distintos umbrales de missing data
+
+| Missing data | m5M3n5 | m5M2n4 | m5M4n6 |
+|--------------|--------|--------|--------|
+| 0%           | 6301   | 6229   | 6342   |
+| 3%           | 5360   | 5260   | 5365   |
+| 7%           | 2534   | 2498   | 2531   |
+| 10%          | 793    | 786    | 790    |
+| 14%          | 2531   | 2514   | 2522   |
+| 17%          | 3596   | 3583   | 3618   |
+
 
 
 
