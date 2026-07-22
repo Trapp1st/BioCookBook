@@ -375,6 +375,8 @@ awk 'NR>1 {print $6}' missing_site_limpio.lmiss | sort -n | uniq -c
 | IA8   | 6%     | 6%     | 6%     |
 | IA22  | 5%     | 5%     | 5%     |
 
+<img src="../Stacks/imagenes/missing_data_por_individuo.png" width="700">
+
 ### Númerode loci retenidos en distintos umbrales de missing data
 
 | Missing data | m5M3n5 | m5M2n4 | m5M4n6 |
@@ -385,6 +387,9 @@ awk 'NR>1 {print $6}' missing_site_limpio.lmiss | sort -n | uniq -c
 | 10%          | 793    | 786    | 790    |
 | 14%          | 2531   | 2514   | 2522   |
 | 17%          | 3596   | 3583   | 3618   |
+
+
+<img src="../Stacks/imagenes/histograma_missing_loci.png" width="700">
 
 
 Al finalizar, se corrió un último *populations* con los 29 individuos restantes (- p 3) para obtener los estadísticos poblacionales finales (*ver 3.3 Populations final*).
