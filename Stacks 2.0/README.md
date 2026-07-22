@@ -204,10 +204,24 @@ El número de poblaciones se fue modificando conforme se depuraban los individuo
 Populations inicial:
 - Localidades: 6
 - `-p 4`
+- Popmap: `Popmap_1M_m5M3n5_postdenovo.tsv`. Se utilizó el mismo popmap para todos en los tres análisis ya que se depuraron previamente los mismos individuos.
 
+**m5M2n4**
+
+```bash
+populations -P ./stacks/R1M_m5M2n4 --popmap ./barcodes/Popmap_1M_m5M3n5_postdenovo.tsv -O ./populations/1M_m5M2n4/ -p 4 -r 0.80 -t 5 --min-maf 0.05 --write-single-snp --genepop --vcf --fasta-loci --fasta-samples
+```
+
+**m5M3n5**
 
 ```bash
 populations -P ./stacks/R1M_m5M3n5 --popmap ./barcodes/Popmap_1M_m5M3n5_postdenovo.tsv -O ./populations/1M_m5M3n5/ -p 4 -r 0.80 -t 5 --min-maf 0.05 --write-single-snp --genepop --vcf --fasta-loci --fasta-samples
+```
+
+**m5M4n6**
+
+```bash
+populations -P ./stacks/R1M_m5M4n6 --popmap ./barcodes/Popmap_1M_m5M3n5_postdenovo.tsv -O ./populations/1M_m5M4n6/ -p 4 -r 0.80 -t 5 --min-maf 0.05 --write-single-snp --genepop --vcf --fasta-loci --fasta-samples
 ```
 
 **Parámetros:**
