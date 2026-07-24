@@ -410,12 +410,128 @@ Al finalizar, se corrió un último *populations* con los 29 individuos restante
 
 ---
 
-## Resumen 
+## R1M (denovo_1M_log)
+
+- Corte 1M reads
+- 7 localidades en total (fusión SR-E y PS-LOB-LO). Se excluyeron dos individuos que en las corridas pasadas estuvieron presentes: `E12` y `PS3`, ambos con ~900K lecturas.
+- Para modulo de *populations*: popmap `popmap_1M_POPMODULE.txt`, `-p 5`
+- m5M2n4
+
+Comandos iniciales (denovo y populations):
+
+```bash
+nohup denovo_map.pl --samples ./demultiplexed --popmap ./barcodes/popmap_1M.txt -o ./stacks/R1M -m 5 -M 2 -n 4 -T 10 &> denovo_1M_log &
+```
+
+```bash
+populations -P ./stacks/R1M --popmap ./barcodes/popmap_1M_POPMODULE.txt -O ./populations/1M/p5/ -p 5 -r 0.80 -t 5 --min-maf 0.05 --write-single-snp --genepop --vcf --fasta-loci --fasta-samples
+```
+
+- Loci retenidos: `12,757`
+- Sitios variantes: `8,282`
+
+Al correr el análisis de VCF x individuo **22 individuos** se excluyeron (toda la localidad de LI, EP5, EP9, E14,EP34, SR4, AN4, EP21, SR6, PS9, PS11, BS2, EP24, PS4, E11).
+
+Se generó un nuevo popmap con 42 individuos `popmap_m5M2n4_p3_1M_R1M.tsv` excluyendo los 22 individuos para volver a correr *populations* `-p 3` y recalcular missingness x individuo x locus. 
+
+```bash
+populations -P ./stacks/R1M --popmap ./barcodes/popmap_m5M2n4_p3_1M_R1M.tsv -O ./populations/1M/p3/ -p 3 -r 0.80 -t 5 --min-maf 0.05 --write-single-snp --genepop --vcf --fasta-loci --fasta-samples
+```
+
+Se obtuvo alto missing data x locus x individuos. `-r 0.80` es una proporción relativa al N de cada población, por eso el missing data cambia. Apliqué un filtro de `--max-missing 0.8`
+
+```bash
+vcftools --vcf populations.snps.vcf --max-missing 0.8 --recode --recode-INFO-all --out mimus_filtered_m08
+```
+
+Al checar el missingnes x locus con `sort`, el valor máximo de MD fue de 19%. 
+
+Número de loci que comparten cada valor de F_miss. La distribución del MD se mantuvo por debaji del 20%. Aunque 543 loci obtuvieron ~19% MD.
+
+```bash
+awk 'NR>1 {print $6}' check_final_site.lmiss | sort -n | uniq -c | sort -rn | head -20
+```
+
+Se extrajo el ID de esos 543 loci para revisar si son un conjunto de individuos específicos que podrían ocasionar sesgo y revisar si necesitan ser excluidos
+
+```bash
+awk 'NR>1 && $6==0.190476 {print $1}' check_final_site.lmiss > loci_nmiss8.txt
+```
+
+El siguiente comando muestra el nombre del individuo junto a su genotipo para ese locuos específico: 
+
+```bash
+paste <(grep "^#CHROM" mimus_filtered_m08.recode.vcf | tr '\t' '\n') \
+      <(grep -P "^99847\t" mimus_filtered_m08.recode.vcf | tr '\t' '\n') \
+      | tail -n +10
+```
+Se observó que todo el grupo de PS, incluyendo los individuos fusionados LO9 y LOB3 falla en el locus 99847. Se genotipa bien para las otras poblaciones. 
+
+PAra observar si en la mayoría de los loci hay ausencia de individuos de PS, entonces puede ser problema de fusión o de calidad de secuenciación distinta. 
+
+```bash
+for locus in $(head -10 loci_nmiss8.txt); do
+  echo "=== Locus $locus ==="
+  paste <(grep "^#CHROM" mimus_filtered_m08.recode.vcf | tr '\t' '\n') \
+        <(grep -P "^${locus}\t" mimus_filtered_m08.recode.vcf | tr '\t' '\n') \
+        | tail -n +10 | awk '$2 ~ /^\.\/\./ {print $1}'
+done
+```
+
+Se observó que el grupo de PS está ausente en la mayoría de los loci observados. Hay missingness a nivel población completa. Con base en esto, hice una curva de diferentes -p con un loop:
+
+```bash
+for p in 3 4 5; do
+  populations -P ./stacks/R1M --popmap ./barcodes/popmap_m5M2n4_p3_1M_R1M.tsv \
+    -O ./populations/1M/test_p${p}/ -p $p -r 0.80 -t 5 --min-maf 0.05 --vcf 2>&1 | grep "Kept"
+done
+```
+
+| -p | Loci retenidos | Sitios variantes |
+|:--:|---------------:|-----------------:|
+| 3  | 45,894         | 78,365           |
+| 4  | 34,025         | 54,417           |
+| 5  | 20,137         | 29,435           |
 
 
+Subí la -p y volví a correr *populatios* `-p 5`. Es más estrictor pero reduce el sesgo poblacional.
+
+```bash
+populations -P ./stacks/R1M --popmap ./barcodes/popmap_m5M2n4_p3_1M_R1M.tsv \
+  -O ./populations/1M/p5_final/ -p 5 -r 0.80 -t 5 --min-maf 0.05 \
+  --write-single-snp --genepop --vcf --fasta-loci --fasta-samples
+```
 
 
+```bash
+vcftools --vcf populations.snps.vcf --missing-site --out missing_site_p5
+```
 
+```bash
+vcftools --vcf populations.snps.vcf --missing-indv --out missing_indv_p5
+```
 
+El individuo IA31 mostró 0.3165 (30%), se descartó. En general, el missing data x locus x individuo se redujo.
 
+```bash
+populations -P ./stacks/R1M --popmap ./barcodes/popmap_final_no_IA31.tsv \
+  -O ./populations/1M/p5_definitivo/ -p 5 -r 0.80 -t 5 --min-maf 0.05 \
+  --write-single-snp --genepop --vcf --fasta-loci --fasta-samples
+```
+
+| Métrica          | Valor                 |
+|:-----------------|:----------------------|
+| Loci retenidos   | 21,971 (de 769,716)   |
+| Sitios variantes | 14,965                |
+| Sitios totales   | 3,209,909             |
+
+| Población | Muestras/locus | π       | Alelos privados |
+|:----------|---------------:|--------:|----------------:|
+| EP        | 10.021         | 0.24688 | 191             |
+| IA        | 11.185         | 0.22610 | 49              |
+| AN        | 4.8466         | 0.24114 | 4               |
+| PS        | 5.5938         | 0.23263 | 8               |
+| BS        | 6.584          | 0.22465 | 12              |
+
+Post-prueba de MD con VCF los individuos mostraron <25% MD
 
