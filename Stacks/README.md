@@ -154,9 +154,6 @@ Gráfico de barras: reads retenidos por individuo.
 
 ## 2. denovo_map.pl
 
-Ensambla los loci de novo (sin genoma de referencia) y construye el 
-catálogo compartido entre individuos.
-
 Tres análisis exploratorios = tres cortes de filtrado de individuos, ya que el número de lecturas entre las 96 muestras fue heterogéneo. Los cortes fueron: 1) individuos con igual o mayor a un millón de lecturas (1M), 2) 750 millones de lecturas (750K) y 3) 500 millones (500K). 
 
 **1M READS**
@@ -179,11 +176,11 @@ nohup denovo_map.pl --samples ./demultiplexed --popmap ./barcodes/popmap_500k.tx
 - `-M 2`: número máximo de mismatches permitidos entre stacks de un mismo individuo
 - `-n 4`: número máximo de mismatches permitidos entre individuos al construir el catálogo
 
-**Notas**
+**Observaciones**
 
-Para evitar que los análisis/cortes compitan por recursos de memoria, se debe correr una por una (1M y 750K crashearon). Correr *denovo.map* tardó en mi caso aproximadamente >9 horas x corrida. Para los análisis de 750K y 1M, utilicé 20 threads porque ningún otro usuario del servidor estaba utilizándolo. Importante revisar antes de enviar cada run.
+Correr una por una (1M y 750K crashearon), >9 horas x corrida. Para los análisis de 750K y 1M, utilicé 20 threads porque ningún otro usuario del servidor estaba utilizándolo. Importante revisar antes de enviar cada run.
 
-Segundas observaciones: lo mismo, a menor número de lecturas, mayor porcentaje de missing data. PAra las tres corridas se utilizó la misma parametrización -m -M -n. Sin embargo, pese a modificarle los valores, el número de loci no es altamente diferente entre parametrización (*puede varian de un número mínimo a unos cuantes centenares de loci*).
+A menor número de lecturas, mayor porcentaje de missing data. PAra las tres corridas se utilizó la misma parametrización -m -M -n. Sin embargo, pese a modificarle los valores, el número de loci no es altamente diferente entre parametrización (*puede varian de un número mínimo a unos cuantes centenares de loci*).
 
 ---
 
