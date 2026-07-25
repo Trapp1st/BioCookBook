@@ -447,11 +447,15 @@ vcftools --vcf populations.snps.vcf --max-missing 0.8 --recode --recode-INFO-all
 
 Al checar el missingnes x locus con `sort`, el valor máximo de MD fue de 19%. 
 
-Número de loci que comparten cada valor de F_miss. La distribución del MD se mantuvo por debaji del 20%. Aunque 543 loci obtuvieron ~19% MD.
+La cuestión es que decenas de loci presentaron entre 16% y 19% de MD. Para checar si ese missingness se concentra en un grupo de individuos en particular: 
 
 ```bash
 awk 'NR>1 {print $6}' check_final_site.lmiss | sort -n | uniq -c | sort -rn | head -20
 ```
+
+- `uniq -c`: números de grupos discretos de MD
+- Por qué los valores se repite: N bajo (N=42)
+- Distribución de loci (número de loci que comparten cada valor de F_miss): aunque la distribución del MD se mantuvo por debaji del 20%, 543 loci obtuvieron ~19% MD.
 
 Se extrajo el ID de esos 543 loci para revisar si son un conjunto de individuos específicos que podrían ocasionar sesgo y revisar si necesitan ser excluidos
 
@@ -467,9 +471,11 @@ paste <(grep "^#CHROM" mimus_filtered_m08.recode.vcf | tr '\t' '\n') \
       | tail -n +10
 ```
 
+-`#CHROM`: es la columna de los IDs de cada locus representados en números (e.g. locus 99847).
+
 Se observó que todo el grupo de PS, incluyendo los individuos fusionados LO9 y LOB3 falla en el locus 99847. Se genotipa bien para las otras poblaciones. 
 
-PAra observar si en la mayoría de los loci hay ausencia de individuos de PS, entonces puede ser problema de fusión o de calidad de secuenciación distinta. 
+PAra observar si en la mayoría de los loci hay ausencia de individuos de PS, entonces:
 
 ```bash
 for locus in $(head -10 loci_nmiss8.txt); do
@@ -503,7 +509,6 @@ populations -P ./stacks/R1M --popmap ./barcodes/popmap_m5M2n4_p3_1M_R1M.tsv \
   -O ./populations/1M/p5_final/ -p 5 -r 0.80 -t 5 --min-maf 0.05 \
   --write-single-snp --genepop --vcf --fasta-loci --fasta-samples
 ```
-
 
 ```bash
 vcftools --vcf populations.snps.vcf --missing-site --out missing_site_p5
