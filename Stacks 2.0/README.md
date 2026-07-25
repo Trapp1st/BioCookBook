@@ -362,10 +362,6 @@ for t in 0.5 0.7 0.8 0.9; do
 done
 ```
 
-```bash
-vcftools --vcf populations.snps.vcf --max-missing 0.8 --recode --recode-INFO-all --out mimus_filtered_m08
-```
-
 Al verificar el porcentaje de missing data por individuo y la distribución por por locus, efectivamente disminuyó para ambos análisis.
 
 
