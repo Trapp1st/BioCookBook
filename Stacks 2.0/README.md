@@ -90,7 +90,7 @@ more process_log
 
 **Process_radtags output**
 
-Se obtuvo >99M de lecturas por pool. El tiempo de computo fue de aproximadamente 1 hora x pool. 
+Se obtuvo >99M de lecturas por pool.
 
 Archivos demultiplexados del pool 3:
 
@@ -110,12 +110,11 @@ Lecturas Retenidas: Pool2 + Pool3
 
 <img src="../Stacks/imagenes/ecdf_reads_processRadtagsTotal.png" width="500">
 
-*Curva de distribución acumulada de los reads retenidos por individuo post-process_radtags.* ~33 de 96 individuos obtuvieron menos de 1 millón de lecturas retenidas. Aquellas con pocos reads, tienden aa presentar missing data alto. Esto permite considerar ya sea bajar el umbral de corte del número de lecturas (e. g. a 500K, 750K, 900K reads) para retener más individuos, evaluando el trade-off en profundidad con relación al tamaño de muestra.
+*Curva de distribución acumulada de los reads retenidos por individuo post-process_radtags.* ~33 de 96 individuos obtuvieron menos de 1 millón de lecturas retenidas. Aquellas con pocos reads, tienden aa presentar missing data alto.
 
 <img src="../Stacks/imagenes/barras_por_muestra.png" width="1000">
 Gráfico de barras: reads retenidos por individuo.
 
-**Muestras descartadas por baja representación**
 
 ## Muestras excluidas por umbral (<900,000 reads retenidos)
 
@@ -154,7 +153,7 @@ Gráfico de barras: reads retenidos por individuo.
 
 **Total excluidas:** 30 muestras
 
-Se excluyeron de análisis posteriores y se construyó el Popmap con los 66 individuos restantes (`popmap_1M_POPMODULE.txt`).
+Se excluyeron de análisis posteriores y se construyó el Popmap con los 66 individuos restantes (`popmap_1M_POPMODULE.txt`, `7 localidades`).
 
 ---
 
@@ -163,7 +162,8 @@ Se excluyeron de análisis posteriores y se construyó el Popmap con los 66 indi
 Ensambla los loci de novo (sin genoma de referencia) y construye el 
 catálogo compartido entre individuos.
 
-Parámetros: `m=5`, `M=2,3,4` `n=M+2 (default)`
+- Parámetros: `m=5`, `M=2,3,4` `n=M+2 (default)`
+- Los catálogos generados consideran a los individuos E12 y PS3 (≥900K reads).
 
 ```bash
 nohup denovo_map.pl --samples ./demultiplexed --popmap ./barcodes/popmap_1M_POPMODULE.txt -o ./stacks/R1M_m5M3n5 -m 5 -M 3 -n 5 -T 20 &> denovo_1M_m5M3n5_log &
@@ -177,16 +177,16 @@ nohup denovo_map.pl --samples ./demultiplexed --popmap ./barcodes/popmap_1M_POPM
 nohup denovo_map.pl --samples ./demultiplexed --popmap ./barcodes/popmap_1M_POPMODULE.txt -o ./stacks/R1M_m5M2n4 -m 5 -M 2 -n 4 -T 20 &> denovo_1M_m5M2n4_log &
 ```
 
-**Parámetros clave:**
+**Parámetros**
 - `-m 5`: mínimo número de lecturas idénticas para formar un stack
 - `-M 2`: número máximo de mismatches permitidos entre stacks de un mismo individuo
 - `-n 4`: número máximo de mismatches permitidos entre individuos al construir el catálogo
 
 **Notas**
 
-- Optimización del ensamblaje de novo a partir de diferetntes combinaciones de parámetros: `RADstackshelpR` (DeRaad, 2021; https://github.com/DevonDeRaad/RADstackshelpR). 
+- Optimización del ensamblaje de novo a partir de diferetntes combinaciones de parámetros: `RADstackshelpR` (DeRaad, 2021; https://github.com/DevonDeRaad/RADstackshelpR). *Pending*
 
-- Los valores de **-m**, **-M** y **-n** son modificables respecto a los datos obtenidos. No hay valores universales:
+- Los valores de **-m**, **-M** y **-n** son modificables. No hay valores universales:
 
 <img src="../Stacks/imagenes/Denovo_parametros_ejemplos.png" width="700">
 
@@ -197,7 +197,7 @@ nohup denovo_map.pl --samples ./demultiplexed --popmap ./barcodes/popmap_1M_POPM
 
 Genera estadísticas poblacionales, filtra loci y exporta formatos de salida (VCF, structure, etc.).
 
-El número de poblaciones se modificón con relación al proceso de depuración de los individuos:
+El número de poblaciones se modificó con relación al proceso de depuración de los individuos:
 
 <img src="../Stacks/imagenes/Localidades_popmaps.png" width="800">
 
@@ -206,6 +206,7 @@ El número de poblaciones se modificón con relación al proceso de depuración 
 - Localidades: 6
 - `-p 4`
 - Popmap: `Popmap_1M_m5M3n5_postdenovo.tsv`. Se utilizó el mismo archivo para los tres análisis ya que se eliminaron los mismos individuos.
+- ojo. pese a que los nombres de los archivos dicen **1M**, en realidad se consideraron individuos con ≥900 lecturas.
 
 **m5M2n4**
 
@@ -361,6 +362,10 @@ for t in 0.5 0.7 0.8 0.9; do
 done
 ```
 
+```bash
+vcftools --vcf populations.snps.vcf --max-missing 0.8 --recode --recode-INFO-all --out mimus_filtered_m08
+```
+
 Al verificar el porcentaje de missing data por individuo y la distribución por por locus, efectivamente disminuyó para ambos análisis.
 
 
@@ -465,6 +470,7 @@ paste <(grep "^#CHROM" mimus_filtered_m08.recode.vcf | tr '\t' '\n') \
       <(grep -P "^99847\t" mimus_filtered_m08.recode.vcf | tr '\t' '\n') \
       | tail -n +10
 ```
+
 Se observó que todo el grupo de PS, incluyendo los individuos fusionados LO9 y LOB3 falla en el locus 99847. Se genotipa bien para las otras poblaciones. 
 
 PAra observar si en la mayoría de los loci hay ausencia de individuos de PS, entonces puede ser problema de fusión o de calidad de secuenciación distinta. 
