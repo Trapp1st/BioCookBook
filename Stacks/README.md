@@ -149,44 +149,6 @@ Esta gráfica es una curva de distribución acumulada de los reads retenidos por
 <img src="imagenes/barras_por_muestra.png" width="1000">
 Gráfico de barras: reads retenidos por individuo.
 
-## Muestras excluidas por umbral (<1M reads retenidos)
-
-| Barcode        | Muestra | Reads retenidos |
-|----------------|---------|----------------:|
-| CAACC-CGATGT   | EP13    |         589,759 |
-| ACTGG-CGATGT   | EP25    |         208,992 |
-| ACTTC-CGATGT   | EP26    |         351,010 |
-| ATACG-CGATGT   | EP27    |         147,145 |
-| ATGAG-CGATGT   | EP29    |         182,698 |
-| ATTAC-CGATGT   | EP31    |         668,853 |
-| CGTAC-CGATGT   | EP38    |         294,980 |
-| CGTCG-CGATGT   | EP39    |         139,032 |
-| CTGTC-CGATGT   | LI11    |          91,804 |
-| GCCGT-CGATGT   | LI18    |         503,469 |
-| GGCTC-CGATGT   | LI26    |         558,496 |
-| GTAGT-CGATGT   | E4      |         413,270 |
-| TACCG-CGATGT   | E13     |          38,346 |
-| TCAGT-CGATGT   | SR8     |         864,141 |
-| TCCGG-CGATGT   | SR10    |          46,839 |
-| TCTGC-CGATGT   | SR11    |          68,910 |
-| TGGAA-CGATGT   | SR13    |         140,476 |
-| TTACC-CGATGT   | SR14    |         726,035 |
-| ACTTC-TTAGGC   | IA17    |         557,048 |
-| CATAT-TTAGGC   | IA28    |         145,897 |
-| GGATA-TTAGGC   | BS6     |         103,150 |
-| GTCGA-TTAGGC   | BS14    |         245,262 |
-| TACCG-TTAGGC   | LOB1    |          21,999 |
-| TACGT-TTAGGC   | LOB2    |         116,318 |
-| TATAC-TTAGGC   | LO2     |          39,255 |
-| TCACG-TTAGGC   | LO3     |          50,848 |
-| TCAGT-TTAGGC   | LO4     |         490,205 |
-| TCCGG-TTAGGC   | LO5     |          86,851 |
-| TCTGC-TTAGGC   | LO6     |         721,876 |
-| TTACC-TTAGGC   | LO10    |         365,500 |
-
-**Total excluidas:** 30 muestras
-
-Primeras observaciones: a menor número de lecturas, mayor porcentaje de missing data. De cualquier forma se termina perdiendo un número considerable de muestras por este primer filtro.
 
 ---
 
