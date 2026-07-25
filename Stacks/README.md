@@ -219,7 +219,7 @@ nohup denovo_map.pl --samples ./demultiplexed --popmap ./barcodes/popmap_500k.tx
 
 **Notas**
 
-Para evitar que los análisis/cortes compitan por recursos de memoria, se debe correr una por una. Correr *denovo.map* tardó en mi caso aproximadamente >9 horas x corrida, esto depende en parte del número de muchos factores, como el número de reads por individuo, la parametrización que se utilice, el número de threads. Para los análisis de 750K y 1M, utilicé 20 threads porque ningún otro usuario del servidor estaba utilizándolo. Importante revisar antes de enviar cada run.
+Para evitar que los análisis/cortes compitan por recursos de memoria, se debe correr una por una (1M y 750K crashearon). Correr *denovo.map* tardó en mi caso aproximadamente >9 horas x corrida. Para los análisis de 750K y 1M, utilicé 20 threads porque ningún otro usuario del servidor estaba utilizándolo. Importante revisar antes de enviar cada run.
 
 Segundas observaciones: lo mismo, a menor número de lecturas, mayor porcentaje de missing data. PAra las tres corridas se utilizó la misma parametrización -m -M -n. Sin embargo, pese a modificarle los valores, el número de loci no es altamente diferente entre parametrización (*puede varian de un número mínimo a unos cuantes centenares de loci*).
 
