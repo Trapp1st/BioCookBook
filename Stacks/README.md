@@ -266,44 +266,12 @@ Un mapa geográfico de las localidades (Pliego-Cárdenas et al., 2021).
 
 <img src="imagenes/mapaGeo_Loc.png" width="300">
 
----
-
-**RUNS ACTUALES**
-
-Parámetros explorados: `-m 5 / M=2,3,4 / n=M+2 (default)`
-Número de lecturas: `≥900K reads`
-Popmap file: `popmap_1M_POPMODULE.txt` con base en el output de *Process_radtags_output* (ver archivo excel *DeNovo_Pool2-3"*.
-
-
-```bash
-nohup denovo_map.pl --samples ./demultiplexed --popmap ./barcodes/popmap_1M_POPMODULE.txt -o ./stacks/R1M_m5M2n4 -m 5 -M 2 -n 4 -T 20 &> denovo_1M_m5M2n4_log &
-```
-
-```bash
-nohup denovo_map.pl --samples ./demultiplexed --popmap ./barcodes/popmap_1M_POPMODULE.txt -o ./stacks/R1M_m5M3n5 -m 5 -M 3 -n 5 -T 20 &> denovo_1M_m5M3n5_log &
-```
-
-```bash
-nohup denovo_map.pl --samples ./demultiplexed --popmap ./barcodes/popmap_1M_POPMODULE.txt -o ./stacks/R1M_m5M4n6 -m 5 -M 4 -n 6 -T 20 &> denovo_1M_m5M4n6_log &
-```
-
----
-
-**Consideraciones**
-
-Posteriormente, cuando obtenga las secuencias del total de pools para *O. mimus* y con el objetivo de optimizar el ensamblaje de novo, evaluaré sistemáticamente diferentes combinaciones de parámetro usando RADstackshelpR (DeRaad, 2021; https://github.com/DevonDeRaad/RADstackshelpR). 
-
-Es importante mencionar que los valores de **-m**, **-M** y **-n**, son modificables respecto a los datos obtenidos de la secuenciacion y su procesamiento con el pipeline de stacks. Por eso es que para diferentes especies, estos números son distintos:
-
-<img src="imagenes/Denovo_parametros_ejemplos.png" width="600">
-
 
 ---
 
 ## 3. populations
 
-Genera estadísticas poblacionales, filtra loci según parámetros de 
-representación, y exporta formatos de salida (VCF, structure, etc.).
+Genera estadísticas poblacionales, filtra loci según parámetros de representación, y exporta formatos de salida (VCF, structure, etc.).
 
 <img src="imagenes/PopulationsModule_initiate.png" width="500">
 
@@ -318,7 +286,6 @@ populations -P ./stacks/RAllinOne_m5M2n4 --popmap ./barcodes/PopMap_aLL_m5M2n4.t
 - `-p 7`: número de poblaciones en las que un locus debe estar presente para conservarse en el análisis.
 - `--min-maf 0.05`: filtro de frecuencia alélica menor mínima
 
-  *Por SNP, se calcula la frencuencia del alelo menos común en todo el conjunto muestreado, el valor de 0.05 nos dice que cualquier alelo menor tenga una frencuencia menor a 5% se descarta. Este umbral es estándar.*
 
 Como  primer output, se obtuvo un número bajo de SNPs por población:
 
@@ -338,8 +305,6 @@ De un número bajo de SNPs (-p 7) aumentó a más de 2000 SNPs (-p 5). Sin embar
 
 <img src="imagenes/Metrics2_pop_p5.png" width="600">
 
-
-Se revisaron superficialmente los estadísticos de diversidad sin haber analizado los missing data por individuo y locus. El FIS fue alto para ESR (posiblemente debido a un error técnico y no a una realidad biológica). AN por el contrario, mostró casi un equilibrio completo de Hardy-Weinberg, quizás sea sesgo.
 
 ---
 
