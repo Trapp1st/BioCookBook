@@ -505,9 +505,7 @@ done
 Subí la -p y volví a correr *populatios* `-p 5`. Es más estrictor pero reduce el sesgo poblacional.
 
 ```bash
-populations -P ./stacks/R1M --popmap ./barcodes/popmap_m5M2n4_p3_1M_R1M.tsv \
-  -O ./populations/1M/p5_final/ -p 5 -r 0.80 -t 5 --min-maf 0.05 \
-  --write-single-snp --genepop --vcf --fasta-loci --fasta-samples
+populations -P ./stacks/R1M --popmap ./barcodes/popmap_m5M2n4_p3_1M_R1M.tsv \ -O ./populations/1M/p5_final/ -p 5 -r 0.80 -t 5 --min-maf 0.05 \ --write-single-snp --genepop --vcf --fasta-loci --fasta-samples
 ```
 
 ```bash
@@ -521,9 +519,7 @@ vcftools --vcf populations.snps.vcf --missing-indv --out missing_indv_p5
 El individuo IA31 mostró 0.3165 (30%), se descartó. En general, el missing data x locus x individuo se redujo.
 
 ```bash
-populations -P ./stacks/R1M --popmap ./barcodes/popmap_final_no_IA31.tsv \
-  -O ./populations/1M/p5_definitivo/ -p 5 -r 0.80 -t 5 --min-maf 0.05 \
-  --write-single-snp --genepop --vcf --fasta-loci --fasta-samples
+populations -P ./stacks/R1M --popmap ./barcodes/popmap_final_no_IA31.tsv \ -O ./populations/1M/p5_definitivo/ -p 5 -r 0.80 -t 5 --min-maf 0.05 \ --write-single-snp --genepop --vcf --fasta-loci --fasta-samples
 ```
 
 | Métrica          | Valor                 |
