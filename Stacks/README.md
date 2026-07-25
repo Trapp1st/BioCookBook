@@ -64,6 +64,7 @@ Los nombres de los archivos puede ser que no sean los adecuados para que Stacks 
 
 
 Ya que el parámetro de *rename* no está instalado en el servidor, se puede utilizar el loop *for* que no depende de paqueterías adicionales. Esto con la finalidad de renombrar extensiones de los archivos.
+
 ```bash
 cd /Datos/smunguia/raw_pools
 ```
@@ -86,8 +87,7 @@ conda activate stacks
 ```
 
 ```bash
-nohup process_radtags -P -p ./raw_pools -b ./barcodes/barcodes_Pool2y3.txt -o ./demultiplexed -c -q -r
--s 25 --inline_index --renz_1 ecoRI --renz_2 mspI &> process_log &
+nohup process_radtags -P -p ./raw_pools -b ./barcodes/barcodes_Pool2y3.txt -o ./demultiplexed -c -q -r -s 25 --inline_index --renz_1 ecoRI --renz_2 mspI &> process_log &
 ```
 
 **Parámetros:**
@@ -144,12 +144,10 @@ Lecturas Retenidas: Pool2 + Pool3
 
 <img src="imagenes/ecdf_reads_processRadtagsTotal.png" width="500">
 
-Esta gráfica es una curva de distribución acumulada de los reads retenidos por individuo post-process_radtags. Se observa que ~33 de 96 individuos obtuvieron menos de 1 millón de lecturas retenidas. Aquellas con pocos reads, tienden aa presentar missing data alto. Esto permite considerar ya sea bajar el umbral (e. g. a 500K, 750K, 900K reads) para retener más individuos, evaluando el trade-off en profundidad con relación al tamaño de muestra.
+Esta gráfica es una curva de distribución acumulada de los reads retenidos por individuo post-process_radtags. Se observa que ~33 de 96 individuos obtuvieron menos de 1 millón de lecturas retenidas. 
 
 <img src="imagenes/barras_por_muestra.png" width="1000">
 Gráfico de barras: reads retenidos por individuo.
-
-**Muestras descartadas por baja representación**
 
 ## Muestras excluidas por umbral (<1M reads retenidos)
 
@@ -188,6 +186,8 @@ Gráfico de barras: reads retenidos por individuo.
 
 **Total excluidas:** 30 muestras
 
+Primeras observaciones: a menor número de lecturas, mayor porcentaje de missing data. De cualquier forma se termina perdiendo un número considerable de muestras por este primer filtro.
+
 ---
 
 ## 2. denovo_map.pl
@@ -195,7 +195,7 @@ Gráfico de barras: reads retenidos por individuo.
 Ensambla los loci de novo (sin genoma de referencia) y construye el 
 catálogo compartido entre individuos.
 
-Tres análisis exploratorios = tres cortes de filtrado de individuos, ya que el número de lecturas entre las 96 muestras fue heterogéneo. Los cortes fueron: 1) individuos con igual o mayor a un millón de lecturas (1M), 2) 750 millones de lecturas (750K) y 3) 500 millones (500K). *EN STANDBY*
+Tres análisis exploratorios = tres cortes de filtrado de individuos, ya que el número de lecturas entre las 96 muestras fue heterogéneo. Los cortes fueron: 1) individuos con igual o mayor a un millón de lecturas (1M), 2) 750 millones de lecturas (750K) y 3) 500 millones (500K). 
 
 **1M READS**
 ```bash
@@ -221,9 +221,11 @@ nohup denovo_map.pl --samples ./demultiplexed --popmap ./barcodes/popmap_500k.tx
 
 Para evitar que los análisis/cortes compitan por recursos de memoria, se debe correr una por una. Correr *denovo.map* tardó en mi caso aproximadamente >9 horas x corrida, esto depende en parte del número de muchos factores, como el número de reads por individuo, la parametrización que se utilice, el número de threads. Para los análisis de 750K y 1M, utilicé 20 threads porque ningún otro usuario del servidor estaba utilizándolo. Importante revisar antes de enviar cada run.
 
+Segundas observaciones: lo mismo, a menor número de lecturas, mayor porcentaje de missing data. PAra las tres corridas se utilizó la misma parametrización -m -M -n. Sin embargo, pese a modificarle los valores, el número de loci no es altamente diferente entre parametrización (*puede varian de un número mínimo a unos cuantes centenares de loci*).
+
 ---
 
-**Segunda aproximación: correr *denovo_map.pl* sin filtros de número de lecturas y en el módulo de *populations* ir depurando la base de datos**
+## Segunda aproximación: correr *denovo_map.pl* sin filtros de número de lecturas y en el módulo de *populations* ir depurando la base de datos
 
 Para esto, se generó un nuevo archivo Popmap incluyendo a todos los individuos; los valores de la parametrización no se modificaron (-m, -M, -n). Se ejecutó el siguiente comando:
 
