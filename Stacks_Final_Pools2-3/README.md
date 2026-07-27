@@ -96,15 +96,10 @@ nohup denovo_map.pl --samples ./demultiplexed --popmap ./barcodes/popmap_1M.txt 
 - `-M 2`: número máximo de mismatches permitidos entre stacks de un mismo individuo
 - `-n 4`: número máximo de mismatches permitidos entre individuos al construir el catálogo
 
- **OUTPUT**:
- 
-- Loci retenidos: `12,757`
-- Sitios variantes: `8,282`
-
 
 Los valores de **-m**, **-M** y **-n** son modificables. No hay valores universales:
 
-<img src="../Stacks_Prueba_1/imagenes/Denovo_parametros_ejemplos.png" width="700">
+<img src="../Stacks_Prueba_1/imagenes/Denovo_parametros_ejemplos.png" width="650">
 
 
 ---
@@ -113,179 +108,67 @@ Los valores de **-m**, **-M** y **-n** son modificables. No hay valores universa
 
 - 7 localidades en total (fusión SR-E y PS-LOB-LO).
 - Para modulo de *populations*: popmap `popmap_1M_POPMODULE.txt`, `-p 5`
-- 
+
 
 ```bash
 populations -P ./stacks/R1M --popmap ./barcodes/popmap_1M_POPMODULE.txt -O ./populations/1M/p5/ -p 5 -r 0.80 -t 5 --min-maf 0.05 --write-single-snp --genepop --vcf --fasta-loci --fasta-samples
 ```
 
-
-El número de poblaciones se modificó con relación al proceso de depuración de los individuos:
-
-<img src="../Stacks_Prueba_1/imagenes/Localidades_popmaps.png" width="800">
-
-### 3.1 Populations inicial
-
-- Localidades: 6
-- `-p 4`
-- Popmap: `Popmap_1M_m5M3n5_postdenovo.tsv`. Se utilizó el mismo archivo para los tres análisis ya que se eliminaron los mismos individuos.
-- ojo. pese a que los nombres de los archivos dicen **1M**, en realidad se consideraron individuos con ≥900 lecturas.
-
-**m5M2n4**
-
-```bash
-populations -P ./stacks/R1M_m5M2n4 --popmap ./barcodes/Popmap_1M_m5M3n5_postdenovo.tsv -O ./populations/1M_m5M2n4/ -p 4 -r 0.80 -t 5 --min-maf 0.05 --write-single-snp --genepop --vcf --fasta-loci --fasta-samples
-```
-
-**m5M3n5**
-
-```bash
-populations -P ./stacks/R1M_m5M3n5 --popmap ./barcodes/Popmap_1M_m5M3n5_postdenovo.tsv -O ./populations/1M_m5M3n5/ -p 4 -r 0.80 -t 5 --min-maf 0.05 --write-single-snp --genepop --vcf --fasta-loci --fasta-samples
-```
-
-**m5M4n6**
-
-```bash
-populations -P ./stacks/R1M_m5M4n6 --popmap ./barcodes/Popmap_1M_m5M3n5_postdenovo.tsv -O ./populations/1M_m5M4n6/ -p 4 -r 0.80 -t 5 --min-maf 0.05 --write-single-snp --genepop --vcf --fasta-loci --fasta-samples
-```
-
 **Parámetros:**
 - `-r 0.8`: el locus debe estar presente en el 80% de los individuos por población (filtro r80)
-- `-p 4`: número de poblaciones en las que un locus debe estar presente para conservarse en el análisis.
-- `--min-maf 0.05`: filtro de frecuencia alélica menor mínima
-
-  *MinMAF: Por SNP se calcula la frencuencia del alelo menos común en todo el conjunto muestreado, el valor de 0.05 nos dice que cualquier alelo menor tenga una frencuencia menor a 5% se descarta. Este umbral es estándar.*
-
-
-### Filtrado de loci (post denovo, `-p 4`)
-
-| Metric           | m5M2n4    | m5M3n5    | m5M4n6    |
-|------------------|-----------|-----------|-----------|
-| Loci removed     | 731596    | 711533    | 693727    |
-| Total loci       | 771462    | 751492    | 733579    |
-| Loci retained    | 39866     | 39959     | 39852     |
-| Total sites      | 5825587   | 5839689   | 5824163   |
-| Sites filtered   | 155436    | 158991    | 160145    |
-| Variant sites    | 27961     | 28239     | 28296     |
+- `-p 5`: número de poblaciones en las que un locus debe estar presente para conservarse en el análisis.
+- `--min-maf 0.05`: filtro de frecuencia alélica menor mínima. Este umbral es estándar.
   
-
-*Se corrió un VCF por individuo y por locus. EP obtuvo más de >30% de missing data, esa localidad se eliminó.*
-
-
-### 3.2 Populations intermedio
-
-- Localidades: 5
-- `-p 3`
-- - Popmap: `Popmap_1M_m5M3n5_MD.tsv`. Se utilizó el mismo archivo para los tres análisis ya que se eliminaron los mismos individuos.
-
-```bash
-populations -P ./stacks/R1M_m5M2n4 --popmap ./barcodes/Popmap_1M_m5M3n5_MD.tsv -O ./populations/1M_m5M2n4/p3_postMissingData -p 3 -r 0.80 -t 5 --min-maf 0.05 --write-single-snp --genepop --vcf --fasta-loci --fasta-samples
-```
-
-```bash
-populations -P ./stacks/R1M_m5M3n5 --popmap ./barcodes/Popmap_1M_m5M3n5_MD.tsv -O ./populations/1M_m5M3n5/p3_postMissingData -p 3 -r 0.80 -t 5 --min-maf 0.05 --write-single-snp --genepop --vcf --fasta-loci --fasta-samples
-```
-
-```bash
-populations -P ./stacks/R1M_m5M2n4 --popmap ./barcodes/Popmap_1M_m5M3n5_MD.tsv -O ./populations/1M_m5M2n4/p3_postMissingData -p 3 -r 0.80 -t 5 --min-maf 0.05 --write-single-snp --genepop --vcf --fasta-loci --fasta-samples
-```
-
-**Loci sin localidad EP (n =30)**
-
-| Metric         | m5M3n5 | m5M2n4 | m5M4n6 |
-|----------------|--------|--------|--------|
-| Loci retained  | 52154  | 52251  | 51948  |
-| Variant sites  | 38776  | 38605  | 38776  |
-
-
-### 3.3 Populations final
-
-- Localidades: 5
-- `-p 3`
-- Individuos: 29
-- Se eliminó EP y E11
-- Popmap: `Popmap_p3_sinE11.tsv`. Se utilizó el mismo archivo para los tres análisis ya que se eliminaron los mismos individuos.
+ **OUTPUT**:
  
- ```bash
-populations -P ./stacks/R1M_m5M3n5 --popmap ./barcodes/Popmap_p3_sinE11.tsv -O ./populations/1M_m5M3n5/p3_sinE11 -p 3 -r 0.80 -R 0.80 -t 5 --min-maf 0.05 --write-single-snp --genepop --vcf --fasta-loci --fasta-samples
-```
-
-```bash
-populations -P ./stacks/R1M_m5M2n4 --popmap ./barcodes/Popmap_p3_sinE11.tsv -O ./populations/1M_m5M2n4/p3_sinE11 -p 3 -r 0.80 -R 0.80 -t 5 --min-maf 0.05 --write-single-snp --genepop --vcf --fasta-loci --fasta-samples
-```
-
-```bash
-populations -P ./stacks/R1M_m5M4n6 --popmap ./barcodes/Popmap_p3_sinE11.tsv -O ./populations/1M_m5M4n6/p3_sinE11 -p 3 -r 0.80 -R 0.80 -t 5 --min-maf 0.05 --write-single-snp --genepop --vcf --fasta-loci --fasta-samples
-```
-
-- `-r 0.80`: dentro de cada población, al menos 80% de sus individuos deben tener el locus
-- `-R 0.80`: a nivel genotipo/SNP, se exige 80% de cobertura por población (es equivalente al --max-missing de vcf).
-
-### Número de loci por corrida para 29 individuos (- p 3)
-
-| Metric         | m5M3n5  | m5M2n4  | m5M4n6  |
-|----------------|---------|---------|---------|
-| Total loci     | 751,492 | 771,462 | 733,579 |
-| Loci retained  | 31,894  | 31,735  | 31,838  |
-| Variant sites  | 22,460  | 22,153  | 22,557  |
-
-### Estadísticas poblacionales finales
-
-
-<img src="../Stacks_Prueba_1/imagenes/populations_final_29ind.png" width="700">
+- Loci retenidos: `12,757`
+- Sitios variantes: `8,282`
 
 
 ---
 
 ## Análisis del missing data (VCFtools)
 
-*El análisis de missing data por individuo y por locus se fue generando entre los análisis del populations.*
-
-**MD por individuo**
-
-```bash
-vcftools --vcf populations.snps.vcf --missing-indv --out miss_1M_m5M2n4_p3
-```
 
 **MD por locus**
 
 ```bash
-vcftools --vcf populations.snps.vcf --missing-site --out missing_site_limpio
-```
-
-Para enlistar individuos o loci con mayor número de missing data:
-
-```bash
-sort -k5 -n -r missing_indv.imiss | head -20
+vcftools --vcf populations.snps.vcf --missing-site --out missing_site_first01
 ```
 
 ```bash
-sort -k6 -n -r missing_site_limpio.lmiss | head -20
+sort -k6 -n -r missing_site_first01.lmiss | head -20
 ```
 
-Debido a que el missing data por locus fue alto para algunos individuos (*y que en análisis previos tales individuos no mostraron alto porcentaje de missing data*), se realizaron cortes de umbral para observar el porcentaje de loci retenidos.
+**Resultado**: muchos loci con alto missing data >20%.
 
-
-| Umbral              | m5M3n5 (Loci retenidos) | m5M2n4 (Loci retenidos) | m5M4n6 (Loci retenidos) | m5M3n5 (% del total 38,776) | m5M2n4 (% del total 38,605) | m5M4n6 (% del total 38,776) |
-|---------------------|--------------------------|--------------------------|--------------------------|-------------------------------|-------------------------------|-------------------------------|
-| 0.5 (≤50% missing)  | 37,881                   | 37,709                   | 37,873                   | 98%                           | 98%                           | 98%                           |
-| 0.7 (≤30% missing)  | 28,340                   | 28,060                   | 28,368                   | 73%                           | 73%                           | 73%                           |
-| 0.8 (≤20% missing)  | 23,212                   | 22,959                   | 23,273                   | 60%                           | 59%                           | 60%                           |
-| 0.9 (≤10% missing)  | 14,816                   | 14,610                   | 14,864                   | 38%                           | 38%                           | 38%                           |
-
-
-Se seleccionó el umbral de 0.8, permitiendo el 20% de missing data. El número de SNPs final rondó entre los ~20K en todas las corridas.
-
-Visualización directa de loci retenidos por cada umbral
+Para revisar el número de loci retenidos por cada umbral, se genera un loop:
 
 ```bash
-for t in 0.5 0.7 0.8 0.9; do
-  echo -n "max-missing $t: "
-  awk -v t=$t 'NR>1 && (1-$6) >= t' missing_site_limpio.lmiss | wc -l
+for t in 0.5 0.6 0.7 0.8 0.9 0.95 1.0; do
+  n=$(awk -v t=$t 'NR>1 && (1-$6) >= t' missing_site_first01.lmiss | wc -l)
+  echo -e "${t}\t${n}"
 done
 ```
 
-Al verificar el porcentaje de missing data por individuo y la distribución por por locus, efectivamente disminuyó para ambos análisis.
+**Resultados**: a un umbral de 0.5, se retienen 8,260 loci, a 0.7 = 4,706 loci retenidos. Se seleccionó el umbral de `0.8` reteniendo `1,782`, permitiendo el 20% de missing data
+
+```bash
+vcftools --vcf populations.snps.vcf --max-missing 0.8 --recode --recode-INFO-all --out vcf_filtrado_locus_08
+```
+
+**MD por individuo**
+
+Se aplicó VCF sobre el archivo ya filtrado `vcf_filtrado_locus_08.recode.vcf`
+
+```bash
+vcftools --vcf vcf_filtrado_locus_08.recode.vcf --missing-indv --out missing_indv_post_locus_08
+```
+
+
+
+
+
 
 
 *Visualización completa de la distribución de los missing data*
