@@ -31,11 +31,11 @@ Pool 2 y 3: >99M de lecturas/pool.
 
 Lecturas Retenidas: Pool2 + Pool3
 
-<img src="../Stacks/imagenes/ecdf_reads_processRadtagsTotal.png" width="500">
+<img src="../Stacks_Prueba_1/imagenes/ecdf_reads_processRadtagsTotal.png" width="500">
 
 *Curva de distribución acumulada de los reads retenidos por individuo post-process_radtags.* ~33 de 96 individuos obtuvieron menos de 1 millón de lecturas retenidas. Aquellas con pocos reads, tienden aa presentar missing data alto.
 
-<img src="../Stacks/imagenes/barras_por_muestra.png" width="1000">
+<img src="../Stacks_Prueba_1/imagenes/barras_por_muestra.png" width="1000">
 Gráfico de barras: reads retenidos por individuo.
 
 
@@ -111,7 +111,7 @@ nohup denovo_map.pl --samples ./demultiplexed --popmap ./barcodes/popmap_1M_POPM
 
 - Los valores de **-m**, **-M** y **-n** son modificables. No hay valores universales:
 
-<img src="../Stacks/imagenes/Denovo_parametros_ejemplos.png" width="700">
+<img src="../Stacks_Prueba_1/imagenes/Denovo_parametros_ejemplos.png" width="700">
 
 
 ---
@@ -122,7 +122,7 @@ Genera estadísticas poblacionales, filtra loci y exporta formatos de salida (VC
 
 El número de poblaciones se modificó con relación al proceso de depuración de los individuos:
 
-<img src="../Stacks/imagenes/Localidades_popmaps.png" width="800">
+<img src="../Stacks_Prueba_1/imagenes/Localidades_popmaps.png" width="800">
 
 ### 3.1 Populations inicial
 
@@ -232,7 +232,7 @@ populations -P ./stacks/R1M_m5M4n6 --popmap ./barcodes/Popmap_p3_sinE11.tsv -O .
 ### Estadísticas poblacionales finales
 
 
-<img src="../Stacks/imagenes/populations_final_29ind.png" width="700">
+<img src="../Stacks_Prueba_1/imagenes/populations_final_29ind.png" width="700">
 
 
 ---
@@ -313,7 +313,7 @@ awk 'NR>1 {print $6}' missing_site_limpio.lmiss | sort -n | uniq -c
 | IA8   | 6%     | 6%     | 6%     |
 | IA22  | 5%     | 5%     | 5%     |
 
-<img src="../Stacks/imagenes/missing_data_por_individuo.png" width="700">
+<img src="../Stacks_Prueba_1/imagenes/missing_data_por_individuo.png" width="700">
 
 ### Númerode loci retenidos en distintos umbrales de missing data
 
@@ -327,7 +327,7 @@ awk 'NR>1 {print $6}' missing_site_limpio.lmiss | sort -n | uniq -c
 | 17%          | 3596   | 3583   | 3618   |
 
 
-<img src="../Stacks/imagenes/histograma_missing_loci.png" width="700">
+<img src="../Stacks_Prueba_1/imagenes/histograma_missing_loci.png" width="700">
 
 
 Al finalizar, se corrió un último *populations* con los 29 individuos restantes (- p 3) para obtener los estadísticos poblacionales finales (*ver 3.3 Populations final*).
