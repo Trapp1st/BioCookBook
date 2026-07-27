@@ -210,19 +210,35 @@ populations -P ./stacks/R1M --popmap ./barcodes/Popmap_5loc_p5_final.tsv \
   --write-single-snp --genepop --vcf --fasta-loci --fasta-samples
 ```
 
+Loci retenidos: `10,161`
+Total de sitios	1,484,111
+Sitios variantes (SNPs) retenidos: `6,404`
 
 
+*Estadísticas poblacionales*
+
+| Población | Muestras/locus | π (pi) | Sitios (todos/variantes/polimórficos) | Alelos privados |
+|-----------|----------------|--------|----------------------------------------|------------------|
+| EP | 11 | 0.253 | 1,484,102 / 6,404 / 5,588 | 154 |
+| PS | 8 | 0.236 | 1,484,096 / 6,404 / 5,235 | 1 |
+| IA | 11 | 0.230 | 1,484,092 / 6,404 / 5,391 | 5 |
+| BS | 7 | 0.231 | 1,484,081 / 6,404 / 4,700 | 2 |
+| AN | 4 | 0.230 | 1,484,064 / 6,404 / 3,912 | 0 |
+
+Verificación de missing data por individuo. Tres individuos con >20% (EP23, 24%; IA25, 21%; IA11, 20%). No se descartaron.
 
 ---
 
-## R1M (denovo_1M_log)
+## Guideline
+
+1. *populations*  (./populations/1M/p5/)
+2. missing-site sobre populations.snps.vcf, decisión de umbral
+3. --max-missing, VCF filtrado por locus
+4. missing-indv sobre el VCF filtrado x locus
+5. Exclusión de individuos con missingness alto y nuevo POPMAP
+6. *populations* con POPMAP nuevo
+7. verificación con missing-site / missing-indv sobre el output nuevo 
 
 
-
-
-
-
-
-Post-prueba de MD con VCF los individuos mostraron <25% MD
 
 
