@@ -229,7 +229,7 @@ Verificación de missing data por individuo. Tres individuos con >20% (EP23, 24%
 
 ---
 
-## Guideline
+## Guideline: resumen
 
 1. *populations*  (./populations/1M/p5/)
 2. missing-site sobre populations.snps.vcf, decisión de umbral
