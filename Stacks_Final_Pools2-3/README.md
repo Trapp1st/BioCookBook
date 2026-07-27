@@ -210,9 +210,9 @@ populations -P ./stacks/R1M --popmap ./barcodes/Popmap_5loc_p5_final.tsv \
   --write-single-snp --genepop --vcf --fasta-loci --fasta-samples
 ```
 
-Loci retenidos: `10,161`
-Total de sitios	1,484,111
-Sitios variantes (SNPs) retenidos: `6,404`
+- Loci retenidos: `10,161`
+- Total de sitios	1,484,111
+- Sitios variantes (SNPs) retenidos: `6,404`
 
 
 *Estadísticas poblacionales*
