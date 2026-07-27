@@ -33,13 +33,13 @@ Lecturas Retenidas: Pool2 + Pool3
 
 <img src="../Stacks_Prueba_1/imagenes/ecdf_reads_processRadtagsTotal.png" width="500">
 
-*Curva de distribución acumulada de los reads retenidos por individuo post-process_radtags.* ~33 de 96 individuos obtuvieron menos de 1 millón de lecturas retenidas. Aquellas con pocos reads, tienden aa presentar missing data alto.
+*Curva de distribución acumulada de los reads retenidos por individuo post-process_radtags.* ~33 individuos obtuvieron menos de 1 millón de lecturas. 
 
 <img src="../Stacks_Prueba_1/imagenes/barras_por_muestra.png" width="1000">
-Gráfico de barras: reads retenidos por individuo.
+Reads retenidos por individuo. 
 
 
-## Muestras excluidas por umbral (<900,000 reads retenidos)
+## Muestras excluidas (<900,000 reads)
 
 | Barcode        | Muestra | Reads retenidos |
 |----------------|---------|----------------:|
@@ -76,28 +76,19 @@ Gráfico de barras: reads retenidos por individuo.
 
 **Total excluidas:** 30 muestras
 
-Se excluyeron de análisis posteriores y se construyó el Popmap con los 66 individuos restantes (`popmap_1M_POPMODULE.txt`, `7 localidades`).
+Se excluyeron de análisis posteriores y se construyó el Popmap con 64 individuos (`popmap_1M_POPMODULE.txt`, `7 localidades`). Los individuos `E12` y `PS3`, ambos con ~900K lecturas, se ignoraron del análisis (no existen en el catálogo R1M).
 
 ---
 
 ## 2. denovo_map.pl
 
-Ensambla los loci de novo (sin genoma de referencia) y construye el 
-catálogo compartido entre individuos.
+- Catálogo: R1M (denovo_1M_log)
+- Corte 1M reads
+- m5M2n4
 
-- Parámetros: `m=5`, `M=2,3,4` `n=M+2 (default)`
-- Los catálogos generados consideran a los individuos E12 y PS3 (≥900K reads).
-
-```bash
-nohup denovo_map.pl --samples ./demultiplexed --popmap ./barcodes/popmap_1M_POPMODULE.txt -o ./stacks/R1M_m5M3n5 -m 5 -M 3 -n 5 -T 20 &> denovo_1M_m5M3n5_log &
-```
 
 ```bash
-nohup denovo_map.pl --samples ./demultiplexed --popmap ./barcodes/popmap_1M_POPMODULE.txt -o ./stacks/R1M_m5M4n6 -m 5 -M 4 -n 6 -T 20 &> denovo_1M_m5M4n6_log &
-```
-
-```bash
-nohup denovo_map.pl --samples ./demultiplexed --popmap ./barcodes/popmap_1M_POPMODULE.txt -o ./stacks/R1M_m5M2n4 -m 5 -M 2 -n 4 -T 20 &> denovo_1M_m5M2n4_log &
+nohup denovo_map.pl --samples ./demultiplexed --popmap ./barcodes/popmap_1M.txt -o ./stacks/R1M -m 5 -M 2 -n 4 -T 10 &> denovo_1M_log &
 ```
 
 **Parámetros**
@@ -105,11 +96,13 @@ nohup denovo_map.pl --samples ./demultiplexed --popmap ./barcodes/popmap_1M_POPM
 - `-M 2`: número máximo de mismatches permitidos entre stacks de un mismo individuo
 - `-n 4`: número máximo de mismatches permitidos entre individuos al construir el catálogo
 
-**Notas**
+ **OUTPUT**:
+ 
+- Loci retenidos: `12,757`
+- Sitios variantes: `8,282`
 
-- Optimización del ensamblaje de novo a partir de diferetntes combinaciones de parámetros: `RADstackshelpR` (DeRaad, 2021; https://github.com/DevonDeRaad/RADstackshelpR). *Pending*
 
-- Los valores de **-m**, **-M** y **-n** son modificables. No hay valores universales:
+Los valores de **-m**, **-M** y **-n** son modificables. No hay valores universales:
 
 <img src="../Stacks_Prueba_1/imagenes/Denovo_parametros_ejemplos.png" width="700">
 
@@ -118,7 +111,14 @@ nohup denovo_map.pl --samples ./demultiplexed --popmap ./barcodes/popmap_1M_POPM
 
 ## 3. populations
 
-Genera estadísticas poblacionales, filtra loci y exporta formatos de salida (VCF, structure, etc.).
+- 7 localidades en total (fusión SR-E y PS-LOB-LO).
+- Para modulo de *populations*: popmap `popmap_1M_POPMODULE.txt`, `-p 5`
+- 
+
+```bash
+populations -P ./stacks/R1M --popmap ./barcodes/popmap_1M_POPMODULE.txt -O ./populations/1M/p5/ -p 5 -r 0.80 -t 5 --min-maf 0.05 --write-single-snp --genepop --vcf --fasta-loci --fasta-samples
+```
+
 
 El número de poblaciones se modificó con relación al proceso de depuración de los individuos:
 
