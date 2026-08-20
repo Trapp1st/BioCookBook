@@ -104,7 +104,7 @@ Los valores de **-m**, **-M** y **-n** son modificables. No hay valores universa
 
 ---
 
-## 3. populations
+## 3.1 populations
 
 - 7 localidades (fusión SR-E y PS-LOB-LO).
 - popmap `popmap_1M_POPMODULE.txt`, `-p 5`
@@ -198,7 +198,7 @@ vcftools --vcf vcf_filtrado_locus_08.recode.vcf --missing-indv --out missing_ind
 
 ---
 
-## 3. populations final
+## 3.2 populations 
 
 - 5 localidades: EP, IA, AN, PS, BS
 - popmap `Popmap_5loc_p5_final.tsv`, `-p 5`
@@ -226,6 +226,50 @@ populations -P ./stacks/R1M --popmap ./barcodes/Popmap_5loc_p5_final.tsv \
 | AN | 4 | 0.230 | 1,484,064 / 6,404 / 3,912 | 0 |
 
 Verificación de missing data por individuo. Tres individuos con >20% (EP23, 24%; IA25, 21%; IA11, 20%). No se descartaron.
+
+---
+
+## 3.3 populations semifinal
+
+- 6 localidades: EP, IA, AN, PS, BS, LI
+- popmap `Popmap_6loc_p6.tsv`, `-p 6`
+- N (individuos) = 48
+- se agregó --min_heterocigosidad (checar código)
+
+```bash
+populations -P ./stacks/R1M --popmap ./barcodes/Popmap_6loc_p6.tsv \
+  -O ./populations/1M/p6_6loc/ -p 6 -r 0.80 -t 5 --min-maf 0.05 \
+  --write-single-snp --genepop --vcf --fasta-loci --fasta-samples
+```
+
+- Loci retenidos: `8,819`
+- Total de sitios	1,287,922
+- Sitios variantes (SNPs) retenidos: `5,415`
+
+
+Verificación de missing data por individuo. Dos individuos con >20% (EP24, 23%; IA25, 21%). No se descartaron.
+
+---
+
+## 3.3 populations final (*por realizar*)
+
+- 6 localidades: EP, IA, AN, PS, BS, LI
+- popmap `Popmap_7loc_p7.tsv`, `-p 7`
+- N (individuos) =
+- se le agrega lo de heterocigosidad nuevamente?
+
+```bash
+populations -P ./stacks/R1M --popmap ./barcodes/Popmap_7loc_p7.tsv \
+  -O ./populations/1M/p7_loc7/ -p 7 -r 0.80 -t 5 --min-maf 0.05 \
+  --write-single-snp --genepop --vcf --fasta-loci --fasta-samples
+```
+
+- Loci retenidos: ``
+- Total de sitios	
+- Sitios variantes (SNPs) retenidos: ``
+
+
+Verificación de missing data por individuo. 
 
 ---
 
