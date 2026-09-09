@@ -1,5 +1,5 @@
 
-# Mi bitácora de stacks
+# Mi bitácora inicial de stacks
 
 # Pipeline bioinformático con Stacks para *Octopus mimus*
 
