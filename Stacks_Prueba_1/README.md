@@ -1,4 +1,6 @@
 
+#Mi bitácora de stacks
+
 # Pipeline bioinformático con Stacks para *Octopus mimus*
 
 Este es un pipeline para el procesamiento de datos ddRADseq de *Octopus mimus*, desde las lecturas crudas hasta las estadísticas poblacionales, usando Stacks. 
@@ -96,12 +98,14 @@ nohup process_radtags -P -p ./raw_pools -b ./barcodes/barcodes_Pool2y3.txt -o ./
 - `-b barcodes_Pool2y3.txt`: ruta hacia la carpeta de archivo de barcodes
 - `-o ./demultiplexed`: carpeta de salida para los archivos FastQ separados
 - `-c`: clean: remueve aquellas lecturas con bases indeterminadas (N)
-- `-q`: filtro  de calidad (Phred)
+- `-q`: filtro de calidad (Phred)
 - `-r`: rescata barcodes/sitios de corte con errores menores
 - `-s 25`: umbral de Phred para el parámetro de -q
+- `-t 140`: truncar a 140 bases (en algunos casos) cuando el output te lo arroja. El mismo proceso se trunca
 - `--inline_index`: índice dentro de la lectura, no como archivo aparte
 - `--renz_1 ecoRI`: enzima corte raro (sitio GAATTC)
 - `--renz_2 mspI`: enzima corte frecuente (CCGG)
+- `--threads 16`: recomendable a 16. El máximo de threads del server del Cib son 62.
 
 **Notas**
 - `nohup`: permite dejar el análisis en el background. Si uno se va a tomar un café y cierra la PC, el server sigue computando el run.
