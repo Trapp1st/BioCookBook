@@ -6,10 +6,6 @@
 
 ---
 
-```bash
-200.23.162.240
-```
-
 ## 1. process_radtags
 
 ```bash
