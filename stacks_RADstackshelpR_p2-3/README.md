@@ -289,8 +289,12 @@ for n in 4 6; do (cd RF53_m3_M5n${n} && nohup populations -P ./ --popmap ../../b
 for n in 4 6; do rsync -ah --progress --partial cib-server:/Datos/meow/stacks/RF53_m3_M5n${n}/populations.snps.vcf ~/Documents/Populations/RF53_M5n${n}.vcf; done
 ```
 
-*Which one?*
-*(Resultado pendiente.)*
+| n | Poli-loci R80 | 
+|---|---|---|
+| M-1 | 36,402 | 
+| =M | 36,552 | 
+| M+1 | 36,638 | 
+
 
 ---
 
