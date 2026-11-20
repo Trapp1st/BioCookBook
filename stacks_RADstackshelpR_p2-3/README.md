@@ -297,7 +297,9 @@ for n in 4 6; do rsync -ah --progress --partial cib-server:/Datos/meow/stacks/RF
 
 ## Final grid with `m` | `M` | `n` 
 
-<img src="../Stacks_Prueba_1/imagenes/Radstackshelp_resultP2-P3.png" width="1000">
+<img src="../Stacks_Prueba_1/imagenes/Radstackshelp_resultP2-P3.png" width="1200">
+
+*los (*) *significan los parámetros seleccionados por la paquetería maximizando el número de SNPs*
 
 
 ---
