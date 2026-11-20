@@ -322,6 +322,6 @@ for n in 4 6; do rsync -ah --progress --partial cib-server:/Datos/meow/stacks/RF
 <img src="../Stacks_Prueba_1/imagenes/Denovo_parametros_ejemplos.png" width="700">
 
 - Lost in parameter space: decision framework
-- 
-<img src="../Stacks_Prueba_1/imagenes/ParisParametrosmMn.png" width="700">
+   
+<img src="../Stacks_Prueba_1/imagenes/ParisParametrosmMn.png" width="800">
 
