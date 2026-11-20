@@ -297,7 +297,7 @@ for n in 4 6; do rsync -ah --progress --partial cib-server:/Datos/meow/stacks/RF
 
 ## Final grid with `m` | `M` | `n` 
 
-![Optimización de parámetros](Stacks_Prueba_1/imagenes/Radstackshelp_resultP2-P3.png)
+<img src="../Stacks_Prueba_1/imagenes/Radstackshelp_resultP2-P3.png" width="600">
 
 
 ---
