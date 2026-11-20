@@ -295,6 +295,10 @@ for n in 4 6; do rsync -ah --progress --partial cib-server:/Datos/meow/stacks/RF
 | =M  | 36,552        |
 | M+1 | 36,638        |
 
+## Final grid with `m` | `M` | `n` 
+
+![Optimización de parámetros m, M y n con RADstackshelp](Stacks_Prueba_1/imagenes/RADstackshelp_final.png)
+
 
 ---
 
