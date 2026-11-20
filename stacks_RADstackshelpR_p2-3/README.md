@@ -301,7 +301,6 @@ for n in 4 6; do rsync -ah --progress --partial cib-server:/Datos/meow/stacks/RF
 
 *Asteriscos en rojo = parámetros seleccionados al maximizar el número de SNPs*
 
-
 ---
 
 ## Guideline: resumen
@@ -313,4 +312,13 @@ for n in 4 6; do rsync -ah --progress --partial cib-server:/Datos/meow/stacks/RF
 5. `denovo_map.pl` con M = 1-8 (n = M). El `optimize_bigM` eligió **M = 5**.
 6. `n` = 4, 5, 6: `optimize_n` seleccionó **n = 6**.
 7. Final selection: `m3M5n6` 
+
+---
+
+**Notas**
+
+- Los valores de **-m**, **-M** y **-n** son modificables. No hay valores universales:
+
+<img src="../Stacks_Prueba_1/imagenes/Denovo_parametros_ejemplos.png" width="700">
+
 
