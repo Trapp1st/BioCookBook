@@ -3,39 +3,27 @@
 
 # Pipeline bioinformático con Stacks para *Octopus mimus*
 
-Este es un pipeline para el procesamiento de datos ddRADseq de *Octopus mimus*, desde las lecturas crudas hasta las estadísticas poblacionales, usando Stacks. 
+Desde las lecturas crudas hasta las estadísticas poblacionales. 
 
-## Resumen del pipeline
+## Resumen
 
 1. **process_radtags**: demultiplexa y limpia las lecturas crudas
 2. **denovo_map.pl**: ensambla de novo y genera compendios de loci
 3. **populations**: estadísticas poblacionales y exportación de datos
 
-<img src="imagenes/Stax_pipeline.png" width="700">
+<img src="imagenes/Stax_pipeline.png" width="600">
 Stacks pipeline (Catchen et al., 2013)
 
 ---
 
-## ¿Cómo acceder al servidor?
+## Server
+1. Hillstone secure connect/UniVPN para acceder con VPN.
 
-Server del CIBNOR
-1. Abrir la aplicación de Hillstone secure connect para acceder con VPN.
-
-<img src="imagenes/vpn_connect.png" width="200">
-
-2. Conectarse al servidor a través de Putty en el puerto 22.
-
-Tipo de conexión: ssh
-
-```bash
-200.23.162.240
-```
-
-<img src="imagenes/Server_connect.png" width="300">
+2. Conectarse al servidor a través de Putty (windows) o linux ssh
 
 ## Almacenamiento de las lecturas crudas
 
-Dentro del servidor (CIBNOR) las lecturas crudas se deben almacenar en la carpeta de Datos, entonces tanto el raw_data (cada pool) y el barcodefile, así como el output con las lecturas demultiplexadas y limpias, se almacenan en Datos (/Datos/user/raw_pools).
+Dentro del servidor las lecturas crudas se almacenan en **Datos**: raw_data (cada pool), barcodefile, output de las lecturas demultiplexadas (/Datos/user/raw_pools).
 
 <img src="imagenes/raw_pools.png" width="400">
 
