@@ -174,15 +174,6 @@ nohup denovo_map.pl --samples ./demultiplexed --popmap ./barcodes/popmap_1M_POPM
 - `-M 2`: número máximo de mismatches permitidos entre stacks de un mismo individuo
 - `-n 4`: número máximo de mismatches permitidos entre individuos al construir el catálogo
 
-**Notas**
-
-- Optimización del ensamblaje de novo a partir de diferetntes combinaciones de parámetros: `RADstackshelpR` (DeRaad, 2021; https://github.com/DevonDeRaad/RADstackshelpR). *Pending*
-
-- Los valores de **-m**, **-M** y **-n** son modificables. No hay valores universales:
-
-<img src="../Stacks_Prueba_1/imagenes/Denovo_parametros_ejemplos.png" width="700">
-
-
 ---
 
 ## 3. populations
