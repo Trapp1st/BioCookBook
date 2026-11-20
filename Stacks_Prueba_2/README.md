@@ -6,14 +6,6 @@
 
 ---
 
-## Server del CIBNOR
-
-Conexión ssh, puerto 22
-
-```bash
-200.23.162.240
-```
-
 ## Almacenamiento de las lecturas crudas
 
 Datos `(/Datos/user/raw_pools)`
