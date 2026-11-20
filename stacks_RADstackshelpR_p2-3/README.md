@@ -299,7 +299,7 @@ for n in 4 6; do rsync -ah --progress --partial cib-server:/Datos/meow/stacks/RF
 
 <img src="../Stacks_Prueba_1/imagenes/Radstackshelp_resultP2-P3.png" width="1200">
 
-*Asteriscos en rojo = parámetros seleccionados al  maximizar el número de SNPs*
+*Asteriscos en rojo = parámetros seleccionados al maximizar el número de SNPs*
 
 
 ---
@@ -311,5 +311,5 @@ for n in 4 6; do rsync -ah --progress --partial cib-server:/Datos/meow/stacks/RF
 3. Elección del popmap: `popmap_top56_sinE.tsv` (53 individuos, 6 poblaciones).
 4. Repetición del `denovo_map.pl` con el popmap final, m = 3-6 y `optimize_m` seleccinó **m = 3**.
 5. `denovo_map.pl` con M = 1-8 (n = M). El `optimize_bigM` eligió **M = 5**.
-6. `n` = 4, 5, 6: `optimize_n` (en curso, van >6 horas).
+6. `n` = 4, 5, 6: `optimize_n` seleccionó **n = 6**.
 
